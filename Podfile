@@ -1,0 +1,6 @@
+platform :ios, '6.1'
+pod 'OCMapper' 
+pod 'SBJson'
+pod 'ASIHTTPRequest'
+pod 'EGOImageLoading'
+pod 'EGOTableViewPullRefresh',:git => 'https://github.com/aiyuelian/EGOTableViewPullRefresh'

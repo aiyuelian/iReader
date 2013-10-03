@@ -1,0 +1,41 @@
+PODS:
+  - ASIHTTPRequest (1.8.1):
+    - ASIHTTPRequest/ASIWebPageRequest
+    - ASIHTTPRequest/CloudFiles
+    - ASIHTTPRequest/S3
+    - Reachability
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/CloudFiles (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.1):
+    - Reachability
+  - EGOCache (2.0)
+  - EGOImageLoading (0.0.1):
+    - EGOCache
+  - EGOTableViewPullRefresh (0.0.1)
+  - OCMapper (1.0.1)
+  - Reachability (3.1.1)
+  - SBJson (3.2)
+
+DEPENDENCIES:
+  - ASIHTTPRequest
+  - EGOImageLoading
+  - EGOTableViewPullRefresh (from `https://github.com/aiyuelian/EGOTableViewPullRefresh`)
+  - OCMapper
+  - SBJson
+
+EXTERNAL SOURCES:
+  EGOTableViewPullRefresh:
+    :git: https://github.com/aiyuelian/EGOTableViewPullRefresh
+
+SPEC CHECKSUMS:
+  ASIHTTPRequest: 162783e0cd71bdd3ff1ceed0cd5fa9505e0116a8
+  EGOCache: c7116e8a6692eecb542f001a9c71f9b71ae9644b
+  EGOImageLoading: 36f4b972563da7dcd32d3e04027b4fe2d3ec0ae7
+  EGOTableViewPullRefresh: 6293dddf85fa759e89d0462a743f99d415acde6e
+  OCMapper: ccd7cfb92443d1296126a1d2b968a6203d79ecd1
+  Reachability: 2be6bc2fd2bd31d97f5db33e75e4b29c79e95883
+  SBJson: e60b4dc22448c2ae1e754b523a4ab53408e85c8d
+
+COCOAPODS: 0.25.0
