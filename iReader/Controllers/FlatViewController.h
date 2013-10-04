@@ -12,28 +12,26 @@
 #import "EGOImageView.h"
 #import "BlockDef.h"
 #import "PullTableView.h"
+#import "BooksInfo.h"
+#import "RootViewController.h"
+#import "BookShelfViewController.h"
 
 
-@interface FlatViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,EGOImageViewDelegate,PullTableViewDelegate>
+
+@interface FlatViewController :RootViewController
 {
     @private
-    PullTableView *listFlatView;
-    NSMutableArray *books;
-    NSString *refash;
-    NSString *loadMore;
-    NSString *bookKind;
+    //NSMutableArray *books;
+   // NSString *bookKind;
     
-    RightButtonPressed rightButtonPressed;
+    //RightButtonPressed rightButtonPressed;
     
-    
+    NSMutableArray *displayBooks;
+    BooksInfo *bookModel;
 }
+
 
 - (id)initWithArray :(NSArray*)parmBooks;
 
-- (void)refashData;
-- (void)loadMoreData;
-- (BOOL)setBookKind :(NSString*)parmBookKind;
-
-- (BOOL)setRightButtonPressedAction:(RightButtonPressed)action;
 
 @end

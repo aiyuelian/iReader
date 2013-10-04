@@ -260,7 +260,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "22"
          endingLineNumber = "22"
-         landmarkName = "-refashData"
+         landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -268,24 +268,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402402742.898381"
+         timestampString = "402561890.022273"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "196"
-         endingLineNumber = "196"
-         landmarkName = "-imageViewLoadedImage:"
-         landmarkType = "5">
+         startingLineNumber = "198"
+         endingLineNumber = "198"
+         landmarkName = "@implementation FlatViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
+         timestampString = "402567899.013097"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
          landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
@@ -294,11 +294,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
+         timestampString = "402569988.688846"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -319,32 +319,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
-         landmarkName = "-recieveModelChangeNotification:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "168"
-         endingLineNumber = "168"
-         landmarkName = "-recieveModelChangeNotification:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "iReader/iReaderManager/iReaderManager.m"
          timestampString = "402402742.898381"
          startingColumnNumber = "9223372036854775807"
@@ -359,11 +333,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
+         timestampString = "402569988.688846"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
          landmarkName = "-rightButtonPressed"
          landmarkType = "5">
       </FileBreakpoint>
@@ -372,12 +346,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402402742.898381"
+         timestampString = "402561890.022273"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "116"
-         endingLineNumber = "116"
-         landmarkName = "-rightButtonPressed"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -385,11 +359,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402324966.681446"
+         timestampString = "402561355.790213"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "20"
-         endingLineNumber = "20"
+         startingLineNumber = "22"
+         endingLineNumber = "22"
          landmarkName = "-initWithArray:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -398,37 +372,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
+         timestampString = "402569988.688846"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "-reloadData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
-         timestampString = "402325510.908041"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -468,7 +416,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "62"
          endingLineNumber = "62"
-         landmarkName = "-pullUpLoadMoreNotification:"
+         landmarkName = "-recieveModelChangeNotification:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -494,7 +442,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "54"
          endingLineNumber = "54"
-         landmarkName = "-pullUpLoadMoreNotification:"
+         landmarkName = "-loadData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -534,6 +482,71 @@
          startingLineNumber = "74"
          endingLineNumber = "74"
          landmarkName = "-parseFinish:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/FlatViewController.m"
+         timestampString = "402562570.391262"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/FlatViewController.m"
+         timestampString = "402567464.620225"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "-loadData"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/FlatViewController.m"
+         timestampString = "402567478.972164"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-recieveModelChangeNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
+         timestampString = "402570492.688079"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
+         landmarkName = "-recieveModelChangeNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/BookShelf/BookShelfViewController.m"
+         timestampString = "402570449.309882"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
+         landmarkName = "-loadData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -7,6 +7,8 @@
 //
 
 #import "BookShelfViewController.h"
+#import "CustomTableViewCellForBookShelf.h"
+#import "BookDisplayView.h"
 
 
 @interface BookShelfViewController ()
@@ -20,10 +22,11 @@
     self = [super init];
     if(self)
     {
-        bookShelfView = [[BookShelfView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-        bookShelfView.showsVerticalScrollIndicator = NO;
-        books = [NSArray arrayWithArray:parmBooks];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kFVCNotifyModelChange object:nil];
+        [self.view addSubview:m_flatListView];
+        bookModel = [[BooksInfo alloc]init];
+        //[bookModel set]
+        displayBooks = [NSMutableArray arrayWithArray:parmBooks];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kModelRefreshNotifiCationName object:nil];
     }
     return self;
 }
@@ -32,27 +35,20 @@
     self = [super init];
     if(self)
     {
-        bookShelfView = [[BookShelfView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-        bookShelfView.showsVerticalScrollIndicator = NO;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kFVCNotifyModelChange object:nil];
+        bookModel = [[BooksInfo alloc]init];
+        displayBooks = [[NSMutableArray alloc]init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kModelRefreshNotifiCationName object:nil];
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    
-    
+    [self.view addSubview:m_flatListView];
+    [bookModel requestData:[bookModel getBookKind]];
     [super viewDidLoad];
-     [self.view addSubview:bookShelfView];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn addTarget:self action:@selector(rightButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    btn.frame = CGRectMake(0, 0, 32, 32);
-    [btn setBackgroundImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
-    UIBarButtonItem *btnItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = btnItem;
+    
     [self.navigationItem setHidesBackButton:YES];
-    [self reloadData:books];
 }
 #pragma mark - 接口函数
 
@@ -63,7 +59,7 @@
 }
 - (BOOL)setBookKind:(NSString *)parmBookKind
 {
-    bookKind = [NSString stringWithString:parmBookKind];
+    [bookModel setBookKind:parmBookKind];
     return YES;
 }
 
@@ -77,64 +73,31 @@
 
 #pragma mark - 私有函数
 
-- (void)reloadData :(NSArray*)parmBooks
+- (BOOL)loadData
 {
-    if(!parmBooks) return;
-    NSArray *subViews = [bookShelfView subviews];
-    for (UIView *view in subViews)
+    NSInteger displayDataCount = [self getBooksSegment:[bookModel getBooksArray]];
+    NSArray *subBooks = [[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+    [self addOffsetToBreakPoint:displayDataCount];
+    if(displayDataCount != 0)
     {
-        [view removeFromSuperview];
-    }
-    
-    int row = 0;
-    int column = 0;
-    
-    int totalCount = [parmBooks count] + 1;
-    
-    int height = 160;
-    int width = 160;
-    
-    int perRowCount = 320 / width;
-    int baseCenterX = 320 / (perRowCount*2);
-    int baseCenterY = height / 2;
-	for (int i = 1; i != totalCount; i++)
-    {
-        BookDisplayView *displayView = [[BookDisplayView alloc]init];
-        Book *b = [books objectAtIndex:i-1];
-        NSString *imagePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:bookKind] stringByAppendingPathComponent:[[b.images.small componentsSeparatedByString:@"/"] lastObject]];
-        if(![[NSFileManager defaultManager] fileExistsAtPath:imagePath])
-        {
-            [displayView setImageViewUrl:b.images.small];
-            [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView]]];
-        }
-        else
-        {
-            UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-            [displayView setImageViewPic:image];
-        }
+        [displayBooks addObjectsFromArray:subBooks];
+        [m_flatListView reloadData];
         
-        if(i%perRowCount != 0)
-        {
-            displayView.center = CGPointMake(baseCenterX+row*width, baseCenterY + column*height);
-            row++;
-        }
-        else
-        {
-            displayView.center = CGPointMake(baseCenterX+row*width, baseCenterY + column*height);
-            row = 0;
-            column++;
-        }
-        [bookShelfView addSubview:displayView];
     }
-    if((totalCount-1)%perRowCount != 0)
-    {
-        [bookShelfView setContentSize:CGSizeMake(0,((totalCount-1)/perRowCount+1)*height +60)];
-    }else
-    {
-        [bookShelfView setContentSize:CGSizeMake(0,(totalCount-1)/perRowCount*height +60)];
-    }
+    
+    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:0.1f];
+    return YES;
+}
+- (void) refreshTable
+{
+    m_flatListView.pullLastRefreshDate = [NSDate date];
+    m_flatListView.pullTableIsRefreshing = NO;
 }
 
+- (void) loadMoreDataToTable
+{
+    m_flatListView.pullTableIsLoadingMore = NO;
+}
 - (LoadImageFinish)createLoadfinishBlock :(EGOImageView*)parmimageView
 {
     LoadImageFinish blk = ^(EGOImageView *parmimageView){
@@ -142,7 +105,7 @@
         
         NSString *url = [parmimageView.imageURL absoluteString];
         NSString *imageName = [[url componentsSeparatedByString:@"/"] lastObject];
-        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:bookKind] stringByAppendingPathComponent:imageName];
+        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:imageName];
         if(![[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
         {
             NSData *data =UIImageJPEGRepresentation(parmimageView.image, 1.f);
@@ -154,8 +117,6 @@
 
 #pragma mark - 接收通知函数
 
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -164,16 +125,106 @@
 
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
-    NSDictionary *parmDic = [notification object];
-    books = [NSArray arrayWithArray:[parmDic objectForKey:@"books"]];
-    bookKind = [NSString stringWithString:[parmDic objectForKey:@"bookKind"]];
-    [self reloadData:books];
+    [self setBreakPointToZero];
+    [displayBooks removeAllObjects];
+    
+    NSInteger displayBooksCount = [self getBooksSegment:[bookModel getBooksArray]];
+    [displayBooks addObjectsFromArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayBooksCount)]];
+    [self addOffsetToBreakPoint:displayBooksCount];
+    
+    
+    m_flatListView.pullLastRefreshDate = [NSDate date];
+    m_flatListView.pullTableIsRefreshing = NO;
+    [m_flatListView reloadData];
+    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:0.1f];
     return YES;
 }
+
+#pragma mark - UITableViewDelegate
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    int row = indexPath.row;
+    NSString *identify  = @"cell";
+    CustomTableViewCellForBookShelf *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if(cell == nil)
+        cell = [[CustomTableViewCellForBookShelf alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    if(cell)
+    {
+        NSArray *subArrays = [cell.contentView subviews];
+        for (UIView *view in subArrays)
+        {
+            [view removeFromSuperview];
+        }
+    }
+    
+    for (int i = 0; i != kSubViewCountInCell; i++)
+    {
+        BookDisplayView *displayView = [[BookDisplayView alloc]init];
+        if(row*kSubViewCountInCell +i == displayBooks.count)
+        {
+            NSLog(@"break");
+            break;
+        }
+
+        Book *book = [displayBooks objectAtIndex:row*kSubViewCountInCell +i];
+        
+        NSString *path = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:[[book.images.small componentsSeparatedByString:@"/"] lastObject]];
+        
+        if([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            [displayView setImageViewPic:[UIImage imageWithContentsOfFile:path]];
+        }else
+        {
+            [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView]]];
+            [displayView setImageViewUrl:book.images.small];
+        }
+        
+        
+        CGRect frame = displayView.frame;
+        frame.origin.x += i*(frame.size.width +20) ;
+        displayView.frame = frame;
+        //lastBookIndex++;
+        [cell.contentView addSubview:displayView];   
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+    
+}
+
+#pragma mark - UITableViewDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 120;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(displayBooks.count%kSubViewCountInCell == 0)
+        return displayBooks.count / kSubViewCountInCell;
+    return displayBooks.count / kSubViewCountInCell + 1;
+}
+
 #pragma mark - 接口方法
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFVCNotifyModelChange object:nil];
+}
+
+
+
+#pragma mark - 下拉刷新上拉加载的Delegate
+
+- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
+{
+    [self loadData];
+}
+- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
+{
+    [bookModel refresh];
 }
 @end

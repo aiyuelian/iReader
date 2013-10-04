@@ -18,5 +18,14 @@
 #pragma mark - iReaderManager
 
 #define kiRMRefash @"refash"
-#define kSegmentCount 6
+#define kSegmentCount 12
+
+#pragma mark - BooksInfo的宏定义 
+
+#define kModelRefreshNotifiCationName @"refresh"
+#define kBookKindName @"bookKindName"
+
+#pragma mark - BookShelfViewController
+
+#define kSubViewCountInCell 3
 #endif

@@ -7,22 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookShelfView.h"
 #import "BookDisplayView.h"
 #import "Config.h"
 #import "Book.h"
 #import "BlockDef.h"
+#import "RootViewController.h"
+#import "CustomTableViewCellForBookShelf.h"
+#import "BooksInfo.h"
 
 
 
-@interface BookShelfViewController : UIViewController
+@interface BookShelfViewController : RootViewController
 {
     @private
-    BookShelfView *bookShelfView;
-    NSArray *books;
-    NSString *bookKind;
-    NSString *refash;
+    //BookShelfView *bookShelfView;
+    //NSArray *books;
+   // NSString *bookKind;
+   // NSString *refash;
    // RightButtonPressed rightButtonPressed;
+    //int lastBookIndex;
+    BooksInfo *bookModel;
+    NSMutableArray *displayBooks;
     
    
 }

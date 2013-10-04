@@ -18,7 +18,7 @@
         self.freshControl = [[UIRefreshControl alloc]init];
         //[self addSubview:self.freshControl];
         
-        self.frame = CGRectMake(0, 0, 80, 120);
+        self.frame = CGRectMake(20, 10, 80, 120);
         egoImageView.frame = self.frame;
         egoImageView.delegate = self;
         egoImageView.placeholderImage = [UIImage imageNamed:@"loading.png"];

@@ -27,24 +27,26 @@
     
     
     
-    self.manager = [[iReaderManager alloc]init];
+    //self.manager = [[iReaderManager alloc]init];
     
-    [self.manager setDisplayView:FlatViewCode];
+   // [self.manager setDisplayView:FlatViewCode];
     //[self.manager setDisplayView:BookViewCode];
-    [self.manager startRequestData :@"GET":@"https://api.douban.com/v2/book/search?tag=java" :YES];
-    self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.manager.currentDisplayController];
+    //[self.manager startRequestData :@"GET":@"https://api.douban.com/v2/book/search?tag=java" :YES];
+    
+    self.flatViewController = [[FlatViewController alloc]init];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];
     
-    UIBarButtonItem *btn1 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+   // UIBarButtonItem *btn1 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *btn2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"list.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    //UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+   // UIBarButtonItem *btn2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"list.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
     
 
     
    // self.navigationController.navigationItem.leftBarButtonItem = rightButton;
-    NSArray *items = [NSArray arrayWithObjects:btn2,sp,btn1, nil];
-    [self.toolbar setItems:items animated:YES];
+    //NSArray *items = [NSArray arrayWithObjects:btn2,sp,btn1, nil];
+    //[self.toolbar setItems:items animated:YES];
     //self.toolbar.backgroundColor = [UIColor clearColor];
     //[self.navigationController.view addSubview:self.toolbar];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

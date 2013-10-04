@@ -54,7 +54,7 @@
             if(!flatViewController) flatViewController = [[FlatViewController alloc]init];
             [flatViewController addObserver:self forKeyPath:@"refash" options:NSKeyValueObservingOptionNew context:nil];
             [flatViewController addObserver:self forKeyPath:@"loadMore" options:NSKeyValueObservingOptionNew context:nil];
-            [flatViewController setRightButtonPressedAction:[self createBSVRightBtnPressedBlock]];
+            //[flatViewController setRightButtonPressedAction:[self createBSVRightBtnPressedBlock]];
             self.currentDisplayController = flatViewController;
             break;
         case BookViewCode:

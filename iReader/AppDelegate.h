@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InCodeMappingProvider.h"
 #import "iReaderManager.h"
+#import "FlatViewController.h"
 
 @class FlatViewController;
 
@@ -18,8 +19,10 @@
 
 @property (strong,nonatomic) InCodeMappingProvider *inCodeMappingProvider;
 
-@property (strong, nonatomic) iReaderManager *manager;
+//@property (strong, nonatomic) iReaderManager *manager;
 @property (strong,nonatomic) UINavigationController *navigationController;
 @property (strong,nonatomic) UIToolbar *toolbar;
+@property (strong,nonatomic) FlatViewController *flatViewController;
+//@property (strong,nonatomic) ControllerCenter *controllerCenter;
 
 @end
