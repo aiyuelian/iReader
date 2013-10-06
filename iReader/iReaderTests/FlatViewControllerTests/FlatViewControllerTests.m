@@ -39,7 +39,7 @@
     [[asiRequest stub]setDelegate:[OCMArg any]];
     [[asiRequest stub]setURL:[OCMArg any]];
     [[asiRequest expect]startAsynchronous];
-    [[asiRequest stub]initWithURL:[OCMArg any]];
+    //[[asiRequest stub]initWithURL:[OCMArg any]];
     communicator.request = asiRequest;
     [communicator start:NO];
 }

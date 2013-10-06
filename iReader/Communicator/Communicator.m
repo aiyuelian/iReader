@@ -27,6 +27,8 @@
 - (void)setURL:(NSURL *)url
 {
     mUrl = url;
+    _request = [[ASIHTTPRequest alloc]initWithURL:mUrl];
+    [_request setDelegate:self];
 }
 
 - (BOOL)checkLocalCache
@@ -51,9 +53,6 @@
     {
         if([self checkLocalCache]) return NO;
     }
-    _request = [[ASIHTTPRequest alloc]initWithURL:mUrl];
-    [_request setDelegate:self];
-    //[_request setURL:mUrl];
     [_request startAsynchronous];
     return YES;
 }
