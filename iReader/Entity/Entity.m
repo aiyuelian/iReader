@@ -9,6 +9,9 @@
 #import "Entity.h"
 
 @implementation Entity
+
+@synthesize communicator = _communicator;
+
 #pragma mark - init
 
 static NSString *strURL = @"https://api.douban.com/v2/book/search?tag=%@";
@@ -17,25 +20,34 @@ static NSString *strURL = @"https://api.douban.com/v2/book/search?tag=%@";
     self = [super init];
     if(self)
     {
-        communicator = [[Communicator alloc]init];
-        communicator.delegate = self;
+       
     }
     return self;
 }
 
 #pragma mark - 接口方法
 
-- (BOOL)requestData:(NSString *)bookKindName :(ControllerCode)code
+- (BOOL)connectServer:(NSString *)bookKindName :(ControllerCode)code
 {
-    [communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKindName]]];
-    [communicator start:NO];
+    if(!_communicator)
+    {
+        _communicator = [[Communicator alloc]init];
+        _communicator.delegate = self;
+    }
+    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKindName]]];
+    [_communicator start:NO];
     return YES;
 }
 
 - (BOOL)checkLocalDataBeforeRequest:(NSString *)bookKindName
 {
-    [communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:strURL,bookKindName]]];
-    [communicator start:YES];
+    if(!_communicator)
+    {
+        _communicator = [[Communicator alloc]init];
+        _communicator.delegate = self;
+    }
+    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:strURL,bookKindName]]];
+    [_communicator start:YES];
     return YES;
 }
 

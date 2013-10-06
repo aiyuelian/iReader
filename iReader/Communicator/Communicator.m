@@ -14,15 +14,13 @@
 
 @implementation Communicator
 
+@synthesize request = _request;
 #pragma mark - 接口方法
 - (id)init
 {
     self = [super init];
     if(self)
-    {
-        mReceive = [[NSMutableData alloc]init];
-        
-    }
+         mReceive = [[NSMutableData alloc]init];
     return self;
 }
 
@@ -30,25 +28,33 @@
 {
     mUrl = url;
 }
+
+- (BOOL)checkLocalCache
+{
+    
+    NSString *strURL = [mUrl absoluteString];
+    NSArray *tempArray = [strURL componentsSeparatedByString:@"="];
+    NSString *dirAndFileName = [tempArray lastObject];
+    NSString *filePath = [self getDocFirstDirFilePath:dirAndFileName :[dirAndFileName stringByAppendingString:@".plist"]];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSMutableArray *books = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        [self.delegate parseFinish:books];
+        return YES;
+    }
+    return NO;
+}
 - (BOOL)start :(BOOL)isCheckedLocal
 {
     if(isCheckedLocal)
     {
-        NSString *strURL = [mUrl absoluteString];
-        NSArray *tempArray = [strURL componentsSeparatedByString:@"="];
-        NSString *dirAndFileName = [tempArray lastObject];
-        NSString *filePath = [self getDocFirstDirFilePath:dirAndFileName :[dirAndFileName stringByAppendingString:@".plist"]];
-        
-        if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        {
-            NSMutableArray *books = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-            [self.delegate parseFinish:books];
-            return YES;
-        }
+        if([self checkLocalCache]) return NO;
     }
-     mRequest = [[ASIHTTPRequest alloc]initWithURL:mUrl];
-    [mRequest setDelegate:self];
-    [mRequest startAsynchronous];
+    _request = [[ASIHTTPRequest alloc]initWithURL:mUrl];
+    [_request setDelegate:self];
+    //[_request setURL:mUrl];
+    [_request startAsynchronous];
     return YES;
 }
 
@@ -56,7 +62,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    mReceive = [[NSMutableData alloc]initWithData:[request responseData]];
+    mReceive = [[NSMutableData alloc]initWithData:[_request responseData]];
     SBJsonParser *parser = [[SBJsonParser alloc]init];
     NSDictionary *josnDic = [parser objectWithData:mReceive];
     NSArray *booksArray = [josnDic objectForKey:@"books"];
@@ -83,7 +89,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSError *reportError = [NSError errorWithDomain:@"testdomain" code:iReaderConnectErrorCode userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[request error],NSUnderlyingErrorKey, nil]];
+    NSError *reportError = [NSError errorWithDomain:@"testdomain" code:iReaderConnectErrorCode userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[_request error],NSUnderlyingErrorKey, nil]];
     [self.delegate connectedError:reportError];
 }
 

@@ -11,8 +11,11 @@
 
 @protocol iReadercommunicatorDelegate <NSObject>
 
+@required
+- (void)parseFinish :(NSMutableArray*)books;
 - (void)parseCount :(int)count;
+@optional
 - (void)connectedError :(NSError*)error;
 - (void)parseOne :(Book*)book;
-- (void)parseFinish :(NSMutableArray*)books;
+
 @end

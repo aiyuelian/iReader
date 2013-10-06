@@ -18,12 +18,15 @@ enum
 @interface Communicator : NSObject<ASIHTTPRequestDelegate>
 {
     @private
-    ASIHTTPRequest *mRequest;
+    ASIHTTPRequest *request;
     NSMutableData *mReceive;
     NSURL *mUrl;
 }
-@property(nonatomic,weak) id<iReadercommunicatorDelegate> delegate;
+@property (nonatomic,strong) ASIHTTPRequest *request;
+@property (nonatomic,weak) id<iReadercommunicatorDelegate> delegate;
 
 - (void)setURL :(NSURL*)url;
 - (BOOL)start :(BOOL)isCheckedLocal;
+
+
 @end

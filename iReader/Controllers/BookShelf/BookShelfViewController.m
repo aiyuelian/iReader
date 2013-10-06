@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [self.view addSubview:m_flatListView];
-    [bookModel requestData:[bookModel getBookKind] :bookShelfViewControllerCode];
+    [bookModel request:[bookModel getBookKind]:kBookShelfViewControllerName];
     [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
@@ -197,6 +197,6 @@
 }
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [bookModel refresh :bookShelfViewControllerCode];
+    [bookModel refresh];
 }
 @end

@@ -45,7 +45,8 @@
 
 - (void)requestData:(NSString *)bookKindName
 {
-    [_bookModel requestData:bookKindName :flatViewControllerCode];
+    [_bookModel createcommunicator:bookKindName];
+    [_bookModel request:bookKindName :kFlatViewControllerName];
 }
 
 - (BOOL)loadData
@@ -83,11 +84,9 @@
 #pragma mark - 默认方法
 - (void)viewDidLoad
 {
+     [super viewDidLoad];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
     [self requestData:@"life"];
-    //[_bookModel requestData:@"life" :flatViewControllerCode];
-
-    [super viewDidLoad];
     [self.view addSubview:m_flatListView];
 }
 - (void)didReceiveMemoryWarning
@@ -192,7 +191,7 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     //[self refashData];
-    [_bookModel refresh :flatViewControllerCode];
+    [_bookModel refresh];
 }
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView

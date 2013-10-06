@@ -23,7 +23,9 @@ typedef enum
     Communicator *communicator;
 }
 
-- (BOOL)requestData :(NSString*)bookKindName :(ControllerCode)code;
+@property (nonatomic,strong) Communicator *communicator;
+
+- (BOOL)connectServer :(NSString*)bookKindName :(ControllerCode)code;
 - (BOOL)checkLocalDataBeforeRequest :(NSString*)bookKindName;
 
 @end

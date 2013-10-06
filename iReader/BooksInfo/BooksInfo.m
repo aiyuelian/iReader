@@ -10,11 +10,13 @@
 
 @implementation BooksInfo
 
+@synthesize communicator = _communicator;
+
 #pragma mark - 接口方法
-- (BOOL)refresh :(ControllerCode)controllerCode
+- (BOOL)refresh //:(ControllerCode)controllerCode
 {
-    code = controllerCode;
-    [self requestData:bookKind :controllerCode];
+   // code = controllerCode;
+    [self request:bookKind :self.currentController];
     return YES;
 }
 
@@ -45,13 +47,39 @@
     return YES;
 }
 
-#pragma mark - 覆写父类方法
 
-- (BOOL)requestData:(NSString *)bookKindName :(ControllerCode)controllerCode
+- (BOOL)checkLocalDataBeforeRequest:(NSString *)bookKindName
 {
-    code = controllerCode;
-    bookKind = [[NSString alloc]initWithString:bookKindName];
-    [super requestData:bookKindName :controllerCode];
+    if(!_communicator)
+    {
+        _communicator = [[Communicator alloc]init];
+        _communicator.delegate = self;
+    }
+    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKindName]]];
+    [_communicator start:YES];
+    return YES;
+}
+
+- (void)test:(NSString *)bookKindName :(NSString *)controllerName
+{
+    
+}
+
+- (void)createcommunicator :(NSString*)bookKindName
+{
+    bookKind = [NSString stringWithString:bookKindName];
+    if(!_communicator)
+    {
+        _communicator = [[Communicator alloc]init];
+        _communicator.delegate = self;
+        
+    }
+    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKindName]]];
+}
+- (BOOL)request:(NSString *)bookKindName :(NSString*)controllerName
+{
+    self.currentController = controllerName;
+    [_communicator start :NO];
     return YES;
 }
 
@@ -61,16 +89,17 @@
 - (void)parseFinish:(NSMutableArray *)books
 {
     bookArray = [NSArray arrayWithArray:books];
-    switch (code)
-    {
-        case flatViewControllerCode:
-            [[NSNotificationCenter defaultCenter] postNotificationName:kflatViewRefreshNotifiCationName object:nil userInfo:nil];
-            break;
-        case bookShelfViewControllerCode:
-            [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
-        default:
-            break;
-    }
-    //[[NSNotificationCenter defaultCenter] postNotificationName:kModelRefreshNotifiCationName object:nil userInfo:nil];
+    
+    if([self.currentController isEqualToString:kFlatViewControllerName])
+        [[NSNotificationCenter defaultCenter] postNotificationName:kflatViewRefreshNotifiCationName object:nil userInfo:nil];
+    if([self.currentController isEqualToString:kBookShelfViewControllerName])
+        [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
+
 }
+
+- (void)parseCount:(int)count
+{
+    
+}
+
 @end

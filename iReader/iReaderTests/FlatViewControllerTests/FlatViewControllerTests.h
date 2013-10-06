@@ -10,9 +10,8 @@
 #import "FlatViewController.h"
 #import "OCMock.h"
 #import "BooksInfo.h"
+#import "Communicator.h"
+//#import "Entity.h"
 
 @interface FlatViewControllerTests : GHTestCase
-{
-   // id flatViewController;
-}
 @end

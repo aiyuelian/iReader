@@ -15,6 +15,8 @@
 #define kFVCCellIdentifier @"cellIdentifier"
 #define kFVCPullUpLoadMoew @"pullUpLoadMore"
 
+#define kFlatViewControllerName  @"FlatViewController"
+
 #pragma mark - iReaderManager
 
 #define kiRMRefash @"refash"
@@ -27,6 +29,7 @@
 #define kBookKindName @"bookKindName"
 
 #pragma mark - BookShelfViewController
+#define kBookShelfViewControllerName @"BookShelfViewController"
 
 #define kSubViewCountInCell 3
 #endif

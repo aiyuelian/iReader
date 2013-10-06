@@ -8,19 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
-#import "Entity.h"
+//#import "Entity.h"
+#import "Communicator.h"
 #import "Config.h"
+#import "iReadercommunicatorDelegate.h"
 
 
-@interface BooksInfo : Entity
+//typedef enum
+//{
+//    flatViewControllerCode = 0,
+//    bookShelfViewControllerCode,
+//    
+//}ControllerCode;
+@interface BooksInfo : NSObject<iReadercommunicatorDelegate>
 {
     @private
     NSString *bookKind;
     NSArray *bookArray;
-    ControllerCode code;
+   // ControllerCode code;
+    Communicator *communicator;
 }
 
-- (BOOL)refresh :(ControllerCode)controllerCode;
+@property (nonatomic,strong) NSString *currentController;
+@property (nonatomic,strong) Communicator *communicator;
+
+- (BOOL)refresh; //:(ControllerCode)controllerCode;
 - (BOOL)loadData;
 - (BOOL)setBookdArray :(NSArray*)bookArray;
 - (BOOL)setBookKind :(NSString*)parmBookKind;
@@ -29,4 +41,7 @@
 
 - (NSArray*)getBooksArray;
 
+- (BOOL)request:(NSString *)bookKindName :(NSString*)controllerName;
+- (void)test :(NSString *)bookKindName :(NSString*)controllerName;
+- (void)createcommunicator :(NSString*)bookKindName;
 @end
