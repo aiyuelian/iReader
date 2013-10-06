@@ -11,13 +11,19 @@
 #import "ASIHTTPRequest.h"
 #import "iReadercommunicatorDelegate.h"
 
+typedef enum
+{
+    flatViewControllerCode = 0,
+    bookShelfViewControllerCode,
+    
+}ControllerCode;
 @interface Entity : NSObject<iReadercommunicatorDelegate>
 {
     @private
     Communicator *communicator;
 }
 
-- (BOOL)requestData :(NSString*)bookKindName;
+- (BOOL)requestData :(NSString*)bookKindName :(ControllerCode)code;
 - (BOOL)checkLocalDataBeforeRequest :(NSString*)bookKindName;
 
 @end

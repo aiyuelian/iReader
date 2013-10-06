@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		21362AB9585042538E4FE18A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A91875F5428447CA54082C9 /* libPods.a */; };
+		9A8CB21B1801055400A5D6B6 /* FlatViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CB21A1801055400A5D6B6 /* FlatViewControllerTests.m */; };
 		DD19CB0817FAA190009EC77E /* BookShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19CB0717FAA190009EC77E /* BookShelfViewController.m */; };
 		DD19CB1417FACFC1009EC77E /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19CB1317FACFC1009EC77E /* settings.png */; };
 		DD19CB2217FADF45009EC77E /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19CB2117FADF45009EC77E /* list.png */; };
@@ -25,15 +26,12 @@
 		DD528B1817F693B800F8A826 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528B1717F693B800F8A826 /* SenTestingKit.framework */; };
 		DD528B1917F693B800F8A826 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528AF017F693B800F8A826 /* UIKit.framework */; };
 		DD528B1A17F693B800F8A826 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528AF217F693B800F8A826 /* Foundation.framework */; };
-		DD528B2217F693B800F8A826 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD528B2017F693B800F8A826 /* InfoPlist.strings */; };
-		DD528B2517F693B800F8A826 /* iReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B2417F693B800F8A826 /* iReaderTests.m */; };
 		DD528B2F17F6A37200F8A826 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528B2E17F6A37200F8A826 /* CoreData.framework */; };
 		DD528B3117F6A38500F8A826 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528B3017F6A38500F8A826 /* Security.framework */; };
 		DD528B4517F6E14600F8A826 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B4417F6E14600F8A826 /* Book.m */; };
 		DD528B5317F6EF0300F8A826 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B5217F6EF0300F8A826 /* Image.m */; };
 		DD528B5817F6F18D00F8A826 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B5717F6F18D00F8A826 /* Rating.m */; };
 		DD528B5C17F6F47300F8A826 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B5B17F6F47300F8A826 /* Tag.m */; };
-		DD528B6017F7094F00F8A826 /* iReaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B5F17F7094F00F8A826 /* iReaderManager.m */; };
 		DD528B6917F70E3700F8A826 /* FlatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B6817F70E3700F8A826 /* FlatViewController.m */; };
 		DD528B6C17F70FB700F8A826 /* CustomTableViewCellForFlat.m in Sources */ = {isa = PBXBuildFile; fileRef = DD528B6B17F70FB700F8A826 /* CustomTableViewCellForFlat.m */; };
 		DDD8A69C17F9A359006E5444 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD8A69B17F9A359006E5444 /* CFNetwork.framework */; };
@@ -67,6 +65,8 @@
 /* Begin PBXFileReference section */
 		8A91875F5428447CA54082C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F76BDFE41A044BE82E01710 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9A8CB2191801055400A5D6B6 /* FlatViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewControllerTests.h; sourceTree = "<group>"; };
+		9A8CB21A1801055400A5D6B6 /* FlatViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatViewControllerTests.m; sourceTree = "<group>"; };
 		DD19CB0617FAA190009EC77E /* BookShelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookShelfViewController.h; sourceTree = "<group>"; };
 		DD19CB0717FAA190009EC77E /* BookShelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookShelfViewController.m; sourceTree = "<group>"; };
 		DD19CB1217FAC321009EC77E /* BlockDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockDef.h; sourceTree = "<group>"; };
@@ -91,10 +91,6 @@
 		DD528B0617F693B800F8A826 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DD528B1617F693B800F8A826 /* iReaderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iReaderTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD528B1717F693B800F8A826 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DD528B1F17F693B800F8A826 /* iReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iReaderTests-Info.plist"; sourceTree = "<group>"; };
-		DD528B2117F693B800F8A826 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DD528B2317F693B800F8A826 /* iReaderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iReaderTests.h; sourceTree = "<group>"; };
-		DD528B2417F693B800F8A826 /* iReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iReaderTests.m; sourceTree = "<group>"; };
 		DD528B2E17F6A37200F8A826 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD528B3017F6A38500F8A826 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DD528B4317F6E14600F8A826 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = ../Model/Book.h; sourceTree = "<group>"; };
@@ -105,8 +101,6 @@
 		DD528B5717F6F18D00F8A826 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
 		DD528B5A17F6F47300F8A826 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		DD528B5B17F6F47300F8A826 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
-		DD528B5E17F7094F00F8A826 /* iReaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iReaderManager.h; sourceTree = "<group>"; };
-		DD528B5F17F7094F00F8A826 /* iReaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iReaderManager.m; sourceTree = "<group>"; };
 		DD528B6717F70E3700F8A826 /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlatViewController.h; path = iReader/Controllers/FlatViewController.h; sourceTree = SOURCE_ROOT; };
 		DD528B6817F70E3700F8A826 /* FlatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlatViewController.m; path = iReader/Controllers/FlatViewController.m; sourceTree = SOURCE_ROOT; };
 		DD528B6A17F70FB700F8A826 /* CustomTableViewCellForFlat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCellForFlat.h; path = ../CustomTableViewCellForFlat.h; sourceTree = "<group>"; };
@@ -164,6 +158,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A54C31217FFF5B10014B7E6 /* iReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A8CB2181801053000A5D6B6 /* FlatViewControllerTests */,
+			);
+			path = iReaderTests;
+			sourceTree = "<group>";
+		};
+		9A8CB2181801053000A5D6B6 /* FlatViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A8CB2191801055400A5D6B6 /* FlatViewControllerTests.h */,
+				9A8CB21A1801055400A5D6B6 /* FlatViewControllerTests.m */,
+			);
+			path = FlatViewControllerTests;
+			sourceTree = "<group>";
+		};
 		DD19CB0417FAA16F009EC77E /* BookShelf */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				DD528AF617F693B800F8A826 /* iReader */,
-				DD528B1D17F693B800F8A826 /* iReaderTests */,
 				DD528AEF17F693B800F8A826 /* Frameworks */,
 				DD528AEE17F693B800F8A826 /* Products */,
 				8F76BDFE41A044BE82E01710 /* Pods.xcconfig */,
@@ -249,13 +259,13 @@
 		DD528AF617F693B800F8A826 /* iReader */ = {
 			isa = PBXGroup;
 			children = (
+				9A54C31217FFF5B10014B7E6 /* iReaderTests */,
 				DD19CB1117FAC313009EC77E /* BlockDef */,
 				DDFEF05617F7F77E00541932 /* Images */,
 				DDFEF05117F7C33500541932 /* Communicator */,
 				DD528B4217F6E13700F8A826 /* Model */,
 				DD528B6217F709E300F8A826 /* Controllers */,
 				DD528B6317F709E300F8A826 /* Views */,
-				DD528B5D17F7090400F8A826 /* iReaderManager */,
 				DD528AFF17F693B800F8A826 /* AppDelegate.h */,
 				DD528B0017F693B800F8A826 /* AppDelegate.m */,
 				DD528AF717F693B800F8A826 /* Supporting Files */,
@@ -274,25 +284,6 @@
 				DD528B0417F693B800F8A826 /* Default@2x.png */,
 				DD528B0617F693B800F8A826 /* Default-568h@2x.png */,
 				DDD8A69A17F96964006E5444 /* Config.h */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DD528B1D17F693B800F8A826 /* iReaderTests */ = {
-			isa = PBXGroup;
-			children = (
-				DD528B2317F693B800F8A826 /* iReaderTests.h */,
-				DD528B2417F693B800F8A826 /* iReaderTests.m */,
-				DD528B1E17F693B800F8A826 /* Supporting Files */,
-			);
-			path = iReaderTests;
-			sourceTree = "<group>";
-		};
-		DD528B1E17F693B800F8A826 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DD528B1F17F693B800F8A826 /* iReaderTests-Info.plist */,
-				DD528B2017F693B800F8A826 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -348,15 +339,6 @@
 			);
 			name = Tag;
 			path = ../Tag;
-			sourceTree = "<group>";
-		};
-		DD528B5D17F7090400F8A826 /* iReaderManager */ = {
-			isa = PBXGroup;
-			children = (
-				DD528B5E17F7094F00F8A826 /* iReaderManager.h */,
-				DD528B5F17F7094F00F8A826 /* iReaderManager.m */,
-			);
-			path = iReaderManager;
 			sourceTree = "<group>";
 		};
 		DD528B6217F709E300F8A826 /* Controllers */ = {
@@ -532,7 +514,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD528B2217F693B800F8A826 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +576,6 @@
 				DD528B5317F6EF0300F8A826 /* Image.m in Sources */,
 				DD528B5817F6F18D00F8A826 /* Rating.m in Sources */,
 				DD528B5C17F6F47300F8A826 /* Tag.m in Sources */,
-				DD528B6017F7094F00F8A826 /* iReaderManager.m in Sources */,
 				DD528B6917F70E3700F8A826 /* FlatViewController.m in Sources */,
 				DD528B6C17F70FB700F8A826 /* CustomTableViewCellForFlat.m in Sources */,
 				DDFEF05417F7C34900541932 /* Communicator.m in Sources */,
@@ -605,6 +585,7 @@
 				DDE01B9E17FDA4F500FCDDB2 /* RootViewController.m in Sources */,
 				DD45E53C17FE90EF000B557D /* CustomTableViewCellForBookShelf.m in Sources */,
 				DD45E53F17FE918F000B557D /* BookDisplayView.m in Sources */,
+				9A8CB21B1801055400A5D6B6 /* FlatViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,7 +593,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD528B2517F693B800F8A826 /* iReaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,14 +611,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				DD528AFA17F693B800F8A826 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DD528B2017F693B800F8A826 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD528B2117F693B800F8A826 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -730,6 +702,7 @@
 		};
 		DD528B2C17F693B800F8A826 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F76BDFE41A044BE82E01710 /* Pods.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iReader.app/iReader";
 				FRAMEWORK_SEARCH_PATHS = (

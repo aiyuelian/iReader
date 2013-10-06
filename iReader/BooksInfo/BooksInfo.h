@@ -11,18 +11,22 @@
 #import "Entity.h"
 #import "Config.h"
 
+
 @interface BooksInfo : Entity
 {
     @private
     NSString *bookKind;
     NSArray *bookArray;
+    ControllerCode code;
 }
 
-- (BOOL)refresh;
+- (BOOL)refresh :(ControllerCode)controllerCode;
 - (BOOL)loadData;
-- (NSArray*)getBooksArray;
 - (BOOL)setBookdArray :(NSArray*)bookArray;
-- (NSString*)getBookKind;
 - (BOOL)setBookKind :(NSString*)parmBookKind;
+
+- (NSString*)getBookKind;
+
+- (NSArray*)getBooksArray;
 
 @end

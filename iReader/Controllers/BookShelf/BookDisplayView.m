@@ -18,13 +18,14 @@
         self.freshControl = [[UIRefreshControl alloc]init];
         //[self addSubview:self.freshControl];
         
-        self.frame = CGRectMake(20, 10, 80, 120);
+        self.frame = CGRectMake(20, 10, 72, 90);
         egoImageView.frame = self.frame;
         egoImageView.delegate = self;
         egoImageView.placeholderImage = [UIImage imageNamed:@"loading.png"];
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapAction:)];
         tapGestureRecognizer.numberOfTapsRequired = 2;
         [self addGestureRecognizer:tapGestureRecognizer];
+        egoImageView.frame = CGRectMake(0, 0, 72, 90);
         [self addSubview:egoImageView];
     }
     return self;
@@ -49,6 +50,7 @@
         [view removeFromSuperview];
     }
     UIView *newView = [[UIImageView alloc]initWithImage:image];
+    //CGRect rect = newView.frame;
     [self addSubview:newView];
     return YES;
 }

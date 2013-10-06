@@ -83,7 +83,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSError *reportError = [NSError errorWithDomain:iReaderConnectErrorDomain code:iReaderConnectErrorCode userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[request error],NSUnderlyingErrorKey, nil]];
+    NSError *reportError = [NSError errorWithDomain:@"testdomain" code:iReaderConnectErrorCode userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[request error],NSUnderlyingErrorKey, nil]];
     [self.delegate connectedError:reportError];
 }
 
@@ -105,4 +105,4 @@
     return documentPath;
 }
 @end
-NSString *iReaderConnectErrorDomain = @"iReaderConnectErrorDomain";
+//NSString *iReaderConnectErrorDomain = @"iReaderConnectErrorDomain";

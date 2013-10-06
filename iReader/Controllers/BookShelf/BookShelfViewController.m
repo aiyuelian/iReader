@@ -26,7 +26,7 @@
         bookModel = [[BooksInfo alloc]init];
         //[bookModel set]
         displayBooks = [NSMutableArray arrayWithArray:parmBooks];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kModelRefreshNotifiCationName object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
 }
@@ -37,7 +37,7 @@
     {
         bookModel = [[BooksInfo alloc]init];
         displayBooks = [[NSMutableArray alloc]init];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kModelRefreshNotifiCationName object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
 }
@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [self.view addSubview:m_flatListView];
-    [bookModel requestData:[bookModel getBookKind]];
+    [bookModel requestData:[bookModel getBookKind] :bookShelfViewControllerCode];
     [super viewDidLoad];
     
     [self.navigationItem setHidesBackButton:YES];
@@ -68,7 +68,6 @@
 - (void)rightButtonPressed
 {
     [self.navigationController popViewControllerAnimated:YES];
-    //rightButtonPressed(books,bookKind);
 }
 
 #pragma mark - 私有函数
@@ -87,32 +86,6 @@
     
     [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:0.1f];
     return YES;
-}
-- (void) refreshTable
-{
-    m_flatListView.pullLastRefreshDate = [NSDate date];
-    m_flatListView.pullTableIsRefreshing = NO;
-}
-
-- (void) loadMoreDataToTable
-{
-    m_flatListView.pullTableIsLoadingMore = NO;
-}
-- (LoadImageFinish)createLoadfinishBlock :(EGOImageView*)parmimageView
-{
-    LoadImageFinish blk = ^(EGOImageView *parmimageView){
-        
-        
-        NSString *url = [parmimageView.imageURL absoluteString];
-        NSString *imageName = [[url componentsSeparatedByString:@"/"] lastObject];
-        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:imageName];
-        if(![[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
-        {
-            NSData *data =UIImageJPEGRepresentation(parmimageView.image, 1.f);
-            [data writeToFile:imageFilePath atomically:YES];
-        }
-    };
-    return blk;
 }
 
 #pragma mark - 接收通知函数
@@ -173,18 +146,17 @@
         if([[NSFileManager defaultManager] fileExistsAtPath:path])
         {
             [displayView setImageViewPic:[UIImage imageWithContentsOfFile:path]];
+            
         }else
         {
-            [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView]]];
+            [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView] :bookModel]];
             [displayView setImageViewUrl:book.images.small];
         }
-        
         
         CGRect frame = displayView.frame;
         frame.origin.x += i*(frame.size.width +20) ;
         displayView.frame = frame;
-        //lastBookIndex++;
-        [cell.contentView addSubview:displayView];   
+        [cell.contentView addSubview:displayView];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -212,7 +184,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFVCNotifyModelChange object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookViewRefreshNotificationName object:nil];
 }
 
 
@@ -225,6 +197,6 @@
 }
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [bookModel refresh];
+    [bookModel refresh :bookShelfViewControllerCode];
 }
 @end

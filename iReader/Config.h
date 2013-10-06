@@ -22,7 +22,8 @@
 
 #pragma mark - BooksInfo的宏定义 
 
-#define kModelRefreshNotifiCationName @"refresh"
+#define kflatViewRefreshNotifiCationName @"flatViewRefresh"
+#define kBookViewRefreshNotificationName @"bookViewRfresh"
 #define kBookKindName @"bookKindName"
 
 #pragma mark - BookShelfViewController

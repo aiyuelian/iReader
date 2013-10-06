@@ -10,10 +10,11 @@
 
 @implementation BooksInfo
 
-#pragma mark - 借口方法
-- (BOOL)refresh
+#pragma mark - 接口方法
+- (BOOL)refresh :(ControllerCode)controllerCode
 {
-    [self requestData:bookKind];
+    code = controllerCode;
+    [self requestData:bookKind :controllerCode];
     return YES;
 }
 
@@ -46,10 +47,11 @@
 
 #pragma mark - 覆写父类方法
 
-- (BOOL)requestData:(NSString *)bookKindName
+- (BOOL)requestData:(NSString *)bookKindName :(ControllerCode)controllerCode
 {
+    code = controllerCode;
     bookKind = [[NSString alloc]initWithString:bookKindName];
-    [super requestData:bookKindName];
+    [super requestData:bookKindName :controllerCode];
     return YES;
 }
 
@@ -58,9 +60,17 @@
 
 - (void)parseFinish:(NSMutableArray *)books
 {
-    //bookKind = [NSString stringWithString:<#(NSString *)#>]
     bookArray = [NSArray arrayWithArray:books];
-   // NSDictionary *parmDic = [NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithArray:books],@"books",[NSString stringWithString:bookKind],kBookKindName, nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kModelRefreshNotifiCationName object:nil userInfo:nil];
+    switch (code)
+    {
+        case flatViewControllerCode:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kflatViewRefreshNotifiCationName object:nil userInfo:nil];
+            break;
+        case bookShelfViewControllerCode:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
+        default:
+            break;
+    }
+    //[[NSNotificationCenter defaultCenter] postNotificationName:kModelRefreshNotifiCationName object:nil userInfo:nil];
 }
 @end

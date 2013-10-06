@@ -10,7 +10,7 @@
 #import "iReadercommunicatorDelegate.h"
 #import "ASIHTTPRequest.h"
 
-extern NSString *iReaderConnectErrorDomain;
+//extern NSString *iReaderConnectErrorDomain;
 enum
 {
     iReaderConnectErrorCode,

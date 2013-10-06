@@ -26,13 +26,6 @@
 	[[ObjectMapper sharedInstance] setLoggingProvider:commonLoggingProvider];
     
     
-    
-    //self.manager = [[iReaderManager alloc]init];
-    
-   // [self.manager setDisplayView:FlatViewCode];
-    //[self.manager setDisplayView:BookViewCode];
-    //[self.manager startRequestData :@"GET":@"https://api.douban.com/v2/book/search?tag=java" :YES];
-    
     self.flatViewController = [[FlatViewController alloc]init];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];

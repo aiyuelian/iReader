@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PullTableView.h"
+#import "EGOImageView.h"
+#import "BlockDef.h"
+#import "BooksInfo.h"
+
 
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>
 {
@@ -15,11 +19,8 @@
     NSInteger m_breakPoint;
     PullTableView *m_flatListView;
 }
-
-//@property(nonatomic,weak) id<ControllerCenterDelegate> switchViewDelegate;
-
 - (BOOL)setBreakPointToZero;
 - (BOOL)addOffsetToBreakPoint :(NSInteger)offset;
 - (NSInteger)getBooksSegment :(NSArray*)books;
-//- (void)rightButtonPressed ;
+- (LoadImageFinish)createLoadfinishBlock :(EGOImageView*)parmimageView :(BooksInfo*)bookModel;
 @end

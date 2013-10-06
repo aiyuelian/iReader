@@ -533,7 +533,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "128"
          endingLineNumber = "128"
-         landmarkName = "-recieveModelChangeNotification:"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>Pods-GHUnitIOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Pods-JSONKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>Pods-OCMock.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>Pods-Reachability.xcscheme</key>
 		<dict>
@@ -53,6 +63,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>010F86D0F06A45B8990B5C02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>016BFD41C5954D5A9FC4DA94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,6 +117,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>199DBD2919DB49F6ABB251AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>20AF6F262E4B4FDCB900DE6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>244C554EFB8E40C1A4D5F6E6</key>
 		<dict>
 			<key>primary</key>
@@ -113,6 +138,11 @@
 			<true/>
 		</dict>
 		<key>2849D9ACB2DA455385EC76E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>292758FE0BD544F287536AD9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,6 +182,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3EDF51C6195742B185976868</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3F53741083364519B172C663</key>
 		<dict>
 			<key>primary</key>
@@ -178,6 +213,11 @@
 			<true/>
 		</dict>
 		<key>4A02E6BDB6DB4776851DDB03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A6443713E4440D0A5B7E7EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -213,6 +253,11 @@
 			<true/>
 		</dict>
 		<key>56DEFC35F73B45099CE2ED66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A95AD2F7E884667981FF997</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -293,6 +338,11 @@
 			<true/>
 		</dict>
 		<key>9D1CF33B9FD14694AD1702DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9F5E95BA2E93477496172E2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -383,6 +433,16 @@
 			<true/>
 		</dict>
 		<key>CE174AFD61B74D088B7A73E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFDF6AE6E0714B08AE78334F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D01F347A33FC48F5A7976172</key>
 		<dict>
 			<key>primary</key>
 			<true/>

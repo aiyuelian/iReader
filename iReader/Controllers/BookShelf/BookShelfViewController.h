@@ -20,16 +20,8 @@
 @interface BookShelfViewController : RootViewController
 {
     @private
-    //BookShelfView *bookShelfView;
-    //NSArray *books;
-   // NSString *bookKind;
-   // NSString *refash;
-   // RightButtonPressed rightButtonPressed;
-    //int lastBookIndex;
     BooksInfo *bookModel;
     NSMutableArray *displayBooks;
-    
-   
 }
 
 - (BOOL)setRightButtonPressedAction :(RightButtonPressed)action;

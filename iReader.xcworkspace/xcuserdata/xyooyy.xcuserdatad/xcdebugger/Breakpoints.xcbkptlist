@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402546978.969053"
+         timestampString = "402723625.702694"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "-recieveModelChangeNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "30"
          endingLineNumber = "30"
-         landmarkName = "-requestData:"
+         landmarkName = "-requestData::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -60,12 +60,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/BooksInfo/BooksInfo.m"
-         timestampString = "402544635.67075"
+         timestampString = "402578843.212786"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
-         landmarkName = "-parseFinish:"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
+         landmarkName = "-getBookKind"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402546978.969053"
+         timestampString = "402723625.702694"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "-loadData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -91,13 +91,78 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "94"
          endingLineNumber = "94"
-         landmarkName = "@implementation RootViewController"
-         landmarkType = "3">
+         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/BookShelf/BookDisplayView.m"
+         timestampString = "402584810.533321"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
+         landmarkName = "-setImageViewPic:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReaderTests/tests/tests.m"
+         timestampString = "402648856.031438"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "15"
+         endingLineNumber = "15"
+         landmarkName = "-testFoo"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/iReaderTests/BookInfoTests/BookInfoTests.m"
+         timestampString = "402667153.86826"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "15"
+         endingLineNumber = "15"
+         landmarkName = "-setUp"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/BooksInfo/BooksInfo.m"
+         timestampString = "402667955.489212"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "16"
+         endingLineNumber = "16"
+         landmarkName = "-refresh:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/iReaderTests/FlatViewControllerTests/FlatViewControllerTests.m"
+         timestampString = "402723170.82166"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "16"
+         endingLineNumber = "16"
+         landmarkName = "-testFlatViewControllerHasANotification"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
    <SymbolicBreakpoints>
       <AddressBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          symbolName = "*0x7514d7">

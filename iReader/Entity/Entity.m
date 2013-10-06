@@ -25,7 +25,7 @@ static NSString *strURL = @"https://api.douban.com/v2/book/search?tag=%@";
 
 #pragma mark - 接口方法
 
-- (BOOL)requestData:(NSString *)bookKindName
+- (BOOL)requestData:(NSString *)bookKindName :(ControllerCode)code
 {
     [communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKindName]]];
     [communicator start:NO];

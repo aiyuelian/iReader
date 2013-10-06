@@ -21,17 +21,17 @@
 @interface FlatViewController :RootViewController
 {
     @private
-    //NSMutableArray *books;
-   // NSString *bookKind;
-    
-    //RightButtonPressed rightButtonPressed;
-    
     NSMutableArray *displayBooks;
     BooksInfo *bookModel;
 }
 
+@property (nonatomic,strong) BooksInfo *bookModel;
+@property (nonatomic,strong) NSMutableArray *displayBooks;
 
 - (id)initWithArray :(NSArray*)parmBooks;
+
+//测试添加
+- (void)requestData :(NSString*)bookKindName;
 
 
 @end

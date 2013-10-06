@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "InCodeMappingProvider.h"
-#import "iReaderManager.h"
 #import "FlatViewController.h"
 
 @class FlatViewController;

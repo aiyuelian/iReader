@@ -105,6 +105,17 @@
 
 #pragma mark - UITableViewDelegate
 
+- (void) refreshTable
+{
+    m_flatListView.pullLastRefreshDate = [NSDate date];
+    m_flatListView.pullTableIsRefreshing = NO;
+}
+
+- (void) loadMoreDataToTable
+{
+    m_flatListView.pullTableIsLoadingMore = NO;
+}
+
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
     
@@ -113,6 +124,25 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     
+}
+
+#pragma mark - 异步加载图片的callBack块
+
+- (LoadImageFinish)createLoadfinishBlock :(EGOImageView*)parmimageView :(BooksInfo*)bookModel
+{
+    LoadImageFinish blk = ^(EGOImageView *parmimageView){
+        
+        
+        NSString *url = [parmimageView.imageURL absoluteString];
+        NSString *imageName = [[url componentsSeparatedByString:@"/"] lastObject];
+        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:imageName];
+        if(![[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
+        {
+            NSData *data =UIImageJPEGRepresentation(parmimageView.image, 1.f);
+            [data writeToFile:imageFilePath atomically:YES];
+        }
+    };
+    return blk;
 }
 
 @end
