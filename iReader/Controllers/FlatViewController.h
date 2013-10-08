@@ -34,6 +34,7 @@
 - (void)requestData;
 - (void)setRequestKind :(NSString*)kindName;
 - (void)refreshData;
+- (NSString*)getBookkind;
 
 
 @end

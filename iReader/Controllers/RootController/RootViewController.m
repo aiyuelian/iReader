@@ -32,10 +32,10 @@
     btn.frame = CGRectMake(0, 0, 32, 32);
     [btn setBackgroundImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem = btnItem;
+    //self.navigationItem.rightBarButtonItem = btnItem;
     [self.navigationItem setHidesBackButton:YES];
     
-    self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 420)];
+    self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385)];
     self.m_flatListView.pullDelegate = self;
     [self.view addSubview:self.m_flatListView];
     self.m_flatListView.delegate = self;

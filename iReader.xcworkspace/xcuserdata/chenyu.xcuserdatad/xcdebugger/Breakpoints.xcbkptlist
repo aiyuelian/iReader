@@ -177,12 +177,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402747576.573907"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "70"
-         endingLineNumber = "70"
-         landmarkName = "-recieveModelChangeNotification:"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -266,12 +266,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
-         landmarkName = "-pullTableViewDidTriggerLoadMore:"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
+         landmarkName = "-recieveModelChangeNotification:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -344,12 +344,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
+         landmarkName = "-loadCellImage::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -409,12 +409,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402747576.573907"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-loadData"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -440,7 +440,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "55"
          endingLineNumber = "55"
-         landmarkName = "-loadData"
+         landmarkName = "-refreshData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -487,12 +487,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402747576.573907"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
-         landmarkName = "-recieveModelChangeNotification:"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -513,12 +513,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402747576.573907"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
-         landmarkName = "-loadData"
+         startingLineNumber = "64"
+         endingLineNumber = "64"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -552,12 +552,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -591,12 +591,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "113"
+         endingLineNumber = "113"
+         landmarkName = "@implementation FlatViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "iReader/Controllers/FlatViewController.m"
+         timestampString = "402925236.816207"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
+         landmarkName = "-loadMoreData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -604,12 +617,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
-         landmarkName = "-tableView:numberOfRowsInSection:"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
+         landmarkName = "-loadMoreData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -617,25 +630,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         timestampString = "402925236.816207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
-         landmarkName = "-numberOfSectionsInTableView:"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "-loadMoreData"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "iReader/Controllers/FlatViewController.m"
-         timestampString = "402750766.30332"
+         filePath = "iReader/AppDelegate.m"
+         timestampString = "402925320.733666"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
-         landmarkName = "-tableView:heightForRowAtIndexPath:"
+         startingLineNumber = "62"
+         endingLineNumber = "62"
+         landmarkName = "-btnSwitchPressed"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

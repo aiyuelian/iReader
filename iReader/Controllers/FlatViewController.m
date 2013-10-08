@@ -54,6 +54,10 @@
 {
     [_bookModel refresh];
 }
+- (NSString*)getBookkind
+{
+    return [_bookModel getBookKind];
+}
 #pragma mark - 默认方法
 - (void)viewDidLoad
 {

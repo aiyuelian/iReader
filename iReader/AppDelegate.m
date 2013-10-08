@@ -30,24 +30,47 @@
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];
     
-   // UIBarButtonItem *btn1 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *btnSwitch = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnSwitchPressed)];
     
-    //UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-   // UIBarButtonItem *btn2 = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"list.png"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *btnList = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnListPressed)];
     
 
-    
-   // self.navigationController.navigationItem.leftBarButtonItem = rightButton;
-    //NSArray *items = [NSArray arrayWithObjects:btn2,sp,btn1, nil];
-    //[self.toolbar setItems:items animated:YES];
-    //self.toolbar.backgroundColor = [UIColor clearColor];
-    //[self.navigationController.view addSubview:self.toolbar];
+
+    NSArray *items = [NSArray arrayWithObjects:btnList,sp,btnSwitch, nil];
+    [self.toolbar setItems:items animated:YES];
+    self.toolbar.backgroundColor = [UIColor clearColor];
+    [self.navigationController.view addSubview:self.toolbar];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     //[self.window addSubview:self.toolbar];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+#pragma mark - toolBar Button Action
+
+- (void)btnListPressed
+{
+    NSArray *viewcontrollers = [self.navigationController viewControllers];
+    int count = [viewcontrollers count];
+    if(![[viewcontrollers objectAtIndex:count-1] isEqual:self.flatViewController])
+        [self.navigationController popToRootViewControllerAnimated:YES];
+}
+- (void)btnSwitchPressed
+{
+    NSArray *viewcontrollers = [self.navigationController viewControllers];
+    int count = [viewcontrollers count];
+    if([[viewcontrollers objectAtIndex:count-1] isEqual:self.flatViewController])
+    {
+        BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]init];
+        [bookShelfController setBookKind:[self.flatViewController getBookkind]];
+        [self.navigationController pushViewController:bookShelfController animated:YES];
+    }
+}
+
+
+#pragma mark - 系统代理
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
