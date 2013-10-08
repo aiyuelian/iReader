@@ -72,14 +72,13 @@
 
 - (void)test_Refresh_Called_When_Pull_Down
 {
-//    id flatViewController = [OCMockObject mockForClass:[FlatViewController class]];
-//    //[[flatViewController stub]pullTableViewDidTriggerRefresh:[OCMArg any]];
-//    [[[flatViewController stub] andCall:@selector(refreshData) onObject:nil] pullTableViewDidTriggerRefresh:[OCMArg any]];
-//    [[flatViewController expect]refreshData];
-//    PullTableView *tableView = [[PullTableView alloc]init];
-//    tableView.pullDelegate = flatViewController;
-//    [tableView.pullDelegate pullTableViewDidTriggerRefresh:[OCMArg any]];
-//    [flatViewController verify];
+    id flatViewController = [OCMockObject mockForClass:[FlatViewController class]];
+  
+    [[flatViewController expect]refreshData];
+    PullTableView *tableView = [[PullTableView alloc]init];
+    tableView.pullDelegate = flatViewController;
+    [tableView.pullDelegate pullTableViewDidTriggerRefresh:[OCMArg any]];
+    [flatViewController verify];
     
 }
 @end
