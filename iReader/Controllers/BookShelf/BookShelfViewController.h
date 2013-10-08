@@ -24,8 +24,10 @@
     NSMutableArray *displayBooks;
 }
 
-- (BOOL)setRightButtonPressedAction :(RightButtonPressed)action;
+@property (nonatomic,strong) BooksInfo *bookModel;
+
 - (id)initWithArray :(NSArray*)parmBooks;
 - (BOOL)setBookKind :(NSString*)parmBookKind;
+- (BOOL)request :(NSString*)controllerName;
 
 @end

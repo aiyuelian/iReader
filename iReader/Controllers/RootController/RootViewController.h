@@ -17,8 +17,9 @@
 {
     @protected
     NSInteger m_breakPoint;
-    PullTableView *m_flatListView;
+    //PullTableView *m_flatListView;
 }
+@property (nonatomic,strong) PullTableView *m_flatListView;
 - (BOOL)setBreakPointToZero;
 - (BOOL)addOffsetToBreakPoint :(NSInteger)offset;
 - (NSInteger)getBooksSegment :(NSArray*)books;

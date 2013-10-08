@@ -15,6 +15,7 @@
 
 @implementation RootViewController
 
+//@synthesize m_flatListView = _m_flatListView;
 - (id)init
 {
     self = [super init];
@@ -34,15 +35,15 @@
     self.navigationItem.rightBarButtonItem = btnItem;
     [self.navigationItem setHidesBackButton:YES];
     
-    m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 420)];
-    m_flatListView.pullDelegate = self;
-    [self.view addSubview:m_flatListView];
-    m_flatListView.delegate = self;
-    m_flatListView.dataSource = self;
+    self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 420)];
+    self.m_flatListView.pullDelegate = self;
+    [self.view addSubview:self.m_flatListView];
+    self.m_flatListView.delegate = self;
+    self.m_flatListView.dataSource = self;
     
-    m_flatListView.pullArrowImage = [UIImage imageNamed:@"blackArrow.png"];
-    m_flatListView.pullBackgroundColor = [UIColor yellowColor];
-    m_flatListView.pullTextColor = [UIColor blackColor];
+    self.m_flatListView.pullArrowImage = [UIImage imageNamed:@"blackArrow.png"];
+    self.m_flatListView.pullBackgroundColor = [UIColor yellowColor];
+    self.m_flatListView.pullTextColor = [UIColor blackColor];
 
     
 }
@@ -105,15 +106,15 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void) refreshTable
+- (void) stopPullDownRefresh
 {
-    m_flatListView.pullLastRefreshDate = [NSDate date];
-    m_flatListView.pullTableIsRefreshing = NO;
+    self.m_flatListView.pullLastRefreshDate = [NSDate date];
+    self.m_flatListView.pullTableIsRefreshing = NO;
 }
 
-- (void) loadMoreDataToTable
+- (void) stopPullUpRefresh
 {
-    m_flatListView.pullTableIsLoadingMore = NO;
+    self.m_flatListView.pullTableIsLoadingMore = NO;
 }
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView

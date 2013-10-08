@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InCodeMappingProvider.h"
 #import "FlatViewController.h"
+#import "Book.h"
 
 @class FlatViewController;
 

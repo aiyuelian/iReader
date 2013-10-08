@@ -31,7 +31,9 @@
 - (id)initWithArray :(NSArray*)parmBooks;
 
 //测试添加
-- (void)requestData :(NSString*)bookKindName;
+- (void)requestData;
+- (void)setRequestKind :(NSString*)kindName;
+- (void)refreshData;
 
 
 @end

@@ -24,7 +24,7 @@
 	[[ObjectMapper sharedInstance] setInstanceProvider:instanceProvider];
 	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
 	[[ObjectMapper sharedInstance] setLoggingProvider:commonLoggingProvider];
-    
+    [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"bookId" forClass:[Book class]];
     
     self.flatViewController = [[FlatViewController alloc]init];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
