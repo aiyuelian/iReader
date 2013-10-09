@@ -25,27 +25,39 @@
 }
 - (NSArray*)getBooksArray
 {
+    if(!bookArray) return nil;
     return [NSArray arrayWithArray:bookArray];
 }
 
 - (BOOL)setBookdArray:(NSArray *)parmBookArray
 {
+    if(!parmBookArray){
+        bookArray = nil;
+        return NO;
+    }
     bookArray = [NSArray arrayWithArray:parmBookArray];
     return YES;
 }
 
 - (NSString*)getBookKind
 {
+    if(!bookKind) return nil;
     return [NSString stringWithString:bookKind];
 }
 
 - (BOOL)setBookKind:(NSString *)parmBookKind
 {
+    if(!parmBookKind)
+    {
+        bookKind = nil;
+        return NO;
+    }
     bookKind = [NSString stringWithString:parmBookKind];
     return YES;
 }
-- (BOOL)refresh
+- (BOOL)refresh :(NSString*)controllerName
 {
+    self.currentController = controllerName;
     [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
     [_communicator start :NO];
     return YES;

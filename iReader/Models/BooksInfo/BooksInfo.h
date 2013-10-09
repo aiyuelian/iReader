@@ -23,7 +23,7 @@
 @property (nonatomic,strong) NSString *currentController;
 @property (nonatomic,strong) Communicator *communicator;
 
-- (BOOL)refresh;
+- (BOOL)refresh :(NSString*)controllerName;
 - (BOOL)setBookdArray :(NSArray*)bookArray;
 - (BOOL)setBookKind :(NSString*)parmBookKind;
 - (BOOL)request:(NSString*)controllerName;

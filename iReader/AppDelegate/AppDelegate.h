@@ -10,6 +10,7 @@
 #import "InCodeMappingProvider.h"
 #import "FlatViewController.h"
 #import "Book.h"
+#import "BookShelfViewController.h"
 
 @class FlatViewController;
 
@@ -23,6 +24,6 @@
 @property (strong,nonatomic) UINavigationController *navigationController;
 @property (strong,nonatomic) UIToolbar *toolbar;
 @property (strong,nonatomic) FlatViewController *flatViewController;
-//@property (strong,nonatomic) ControllerCenter *controllerCenter;
+@property (strong,nonatomic) BookShelfViewController *bookShelfController;
 
 @end

@@ -15,57 +15,53 @@
 
 @implementation FlatViewController
 
-@synthesize bookModel = _bookModel,displayBooks = _displayBooks;
+//@synthesize bookModel = _bookModel;
 
 #pragma mark - 共有方法
 
+- (id)initWithModel:(BooksInfo *)parmBookModel
+{
+    self = [super init];
+    if(self)
+    {
+        bookModel = parmBookModel;
+        displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
+        [self addOffsetToBreakPoint:kSegmentCount];
+    }
+    return self;
+}
 - (id)init
 {
     self = [super init];
     if(self)
     {
-       
-        _displayBooks = [[NSMutableArray alloc]init];
-         _bookModel = [[BooksInfo alloc]init];
+        displayBooks = [[NSMutableArray alloc]init];
+         bookModel = [[BooksInfo alloc]init];
+        [bookModel setBookdArray:nil];
+        [bookModel setBookKind:nil];
     }      
-    return self;
-}
-- (id)initWithArray :(NSArray*)parmBooks
-{
-    self = [super init];
-    if(self)
-    {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
-         _bookModel = [[BooksInfo alloc]init];
-       
-        [_bookModel setBookdArray:parmBooks];
-    }
     return self;
 }
 - (void)requestData
 {
-    [_bookModel request :kFlatViewControllerName];
+    [bookModel request :kFlatViewControllerName];
 }
 - (void)setRequestKind:(NSString *)kindName
 {
-    [_bookModel setBookKind:kindName];
+    [bookModel setBookKind:kindName];
 }
-- (void)refreshData
+- (BooksInfo*)getBookModel
 {
-    [_bookModel refresh];
-}
-- (NSString*)getBookkind
-{
-    return [_bookModel getBookKind];
+    return bookModel;
 }
 #pragma mark - 默认方法
 - (void)viewDidLoad
 {
      [super viewDidLoad];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
-    [self setRequestKind:@"c++"];
-    [self requestData];
-     
+    if([bookModel getBookKind] != nil && ![bookModel getBooksArray]){
+         [self requestData];
+    }
     [self.view addSubview:self.m_flatListView];
 }
 - (void)didReceiveMemoryWarning
@@ -76,8 +72,7 @@
 
 - (void)rightButtonPressed
 {
-    BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]init];
-    [bookShelfController setBookKind:[_bookModel getBookKind]];
+    BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]initWithBookInfoModel:bookModel];
     [self.navigationController pushViewController:bookShelfController animated:YES];
 }
 
@@ -88,8 +83,8 @@
     CustomTableViewCellForFlat *cell = [tableView dequeueReusableCellWithIdentifier:kFVCCellIdentifier];
     if(cell == nil)
         cell = [[CustomTableViewCellForFlat alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFVCCellIdentifier];
-    if([[_bookModel getBooksArray] count]< indexPath.row+1) return nil;
-    Book *book = [[_bookModel getBooksArray] objectAtIndex:indexPath.row];
+    if([[bookModel getBooksArray] count]< indexPath.row+1) return nil;
+    Book *book = [[bookModel getBooksArray] objectAtIndex:indexPath.row];
     
     [self configCellTitleAndAuthor:cell :book];
     [self loadCellImage:cell :book];
@@ -99,7 +94,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_displayBooks count];
+    return [displayBooks count];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -124,7 +119,7 @@
     if(![[NSFileManager defaultManager] fileExistsAtPath:imagePath])
     {
         [cell setImageViewUrl:book.images.small];
-        [cell setImageLoad:[self createLoadfinishBlock:[cell getImageView] :_bookModel]];
+        [cell setImageLoad:[self createLoadfinishBlock:[cell getImageView] :bookModel]];
     }
     else
     {
@@ -138,17 +133,19 @@
 - (void)clearCellContentView :(UITableViewCell*)cell
 {
     NSArray *subViews = [cell.contentView subviews];
-    for (UIView *view in subViews)
+    for (UIView *view in subViews){
         [view removeFromSuperview];
+    }
+    
 }
 - (BOOL)loadMoreData
 {
-    NSInteger displayDataCount = [self getBooksSegment:[_bookModel getBooksArray]];
-    NSArray *subBooks = [[_bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+    NSInteger displayDataCount = [self getBooksSegment:[bookModel getBooksArray]];
+    NSArray *subBooks = [[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
     [self addOffsetToBreakPoint:displayDataCount];
     if(displayDataCount != 0)
     {
-        [_displayBooks addObjectsFromArray:subBooks];
+        [displayBooks addObjectsFromArray:subBooks];
         [self.m_flatListView reloadData];
         
     }
@@ -160,7 +157,7 @@
     NSArray *subStrArray = [orgUrl componentsSeparatedByString:@"/"];
     NSString *imageName = [subStrArray lastObject];
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    path = [path stringByAppendingPathComponent:[_bookModel getBookKind]];
+    path = [path stringByAppendingPathComponent:[bookModel getBookKind]];
     path = [path stringByAppendingPathComponent:imageName];
     return path;
 }
@@ -187,10 +184,10 @@
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
     [self setBreakPointToZero];
-    [_displayBooks removeAllObjects];
+    [displayBooks removeAllObjects];
     
-    NSInteger displayBooksCount = [self getBooksSegment:[_bookModel getBooksArray]];
-    [_displayBooks addObjectsFromArray:[[_bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayBooksCount)]];
+    NSInteger displayBooksCount = [self getBooksSegment:[bookModel getBooksArray]];
+    [displayBooks addObjectsFromArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayBooksCount)]];
     [self addOffsetToBreakPoint:displayBooksCount];
     
     self.m_flatListView.pullLastRefreshDate = [NSDate date];
@@ -206,7 +203,7 @@
 
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [self refreshData];
+    [bookModel refresh:kFlatViewControllerName];
 }
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView

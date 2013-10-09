@@ -17,17 +17,17 @@
 
 @implementation BookShelfViewController
 
-@synthesize bookModel = _bookModel;
+//@synthesize bookModel = _bookModel;
 
 #pragma mark - 初始化函数
-- (id)initWithArray:(NSArray *)parmBooks
+
+- (id)initWithBookInfoModel:(BooksInfo *)parmBookModel
 {
     self = [super init];
-    if(self)
-    {
-        [self.view addSubview:self.m_flatListView];
-        _bookModel = [[BooksInfo alloc]init];
-        displayBooks = [NSMutableArray arrayWithArray:parmBooks];
+    if(self){
+        bookModel = parmBookModel;
+        displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
+        [self addOffsetToBreakPoint:kSegmentCount];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
@@ -37,8 +37,10 @@
     self = [super init];
     if(self)
     {
-        _bookModel = [[BooksInfo alloc]init];
         displayBooks = [[NSMutableArray alloc]init];
+        bookModel = [[BooksInfo alloc]init];
+        [bookModel setBookdArray:nil];
+        [bookModel setBookKind:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
@@ -47,13 +49,13 @@
 #pragma mark - 系统函数
 - (void)viewDidLoad
 {
-    [self.view addSubview:self.m_flatListView];
+   
     
-    NSString *bookKindName = [_bookModel getBookKind];
-    if(!bookKindName) return;
-     
-    [_bookModel request:kBookShelfViewControllerName];
+    if([bookModel getBooksArray] == nil && [bookModel getBookKind] != nil){
+        [self requestData];
+    }
     [super viewDidLoad];
+     [self.view addSubview:self.m_flatListView];
     
     [self.navigationItem setHidesBackButton:YES];
 }
@@ -64,16 +66,19 @@
 }
 
 #pragma mark - 接口函数
-- (BOOL)setBookKind:(NSString *)parmBookKind
+- (void)setRequestKind:(NSString *)parmBookKind
 {
-    [_bookModel setBookKind:parmBookKind];
-    return YES;
+    [bookModel setBookKind:parmBookKind];
 }
 
-- (BOOL)request:(NSString *)controllerName
+- (void)requestData
 {
-    [_bookModel request:controllerName];
-    return YES;
+    [bookModel request:kBookShelfViewControllerName];
+}
+
+- (BooksInfo*)getBookModel
+{
+    return bookModel;
 }
 
 #pragma mark - 右导航栏按钮的,覆写父类的方法
@@ -87,8 +92,8 @@
 
 - (BOOL)loadMoreData
 {
-    NSInteger displayDataCount = [self getBooksSegment:[_bookModel getBooksArray]];
-    NSArray *subBooks = [[_bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+    NSInteger displayDataCount = [self getBooksSegment:[bookModel getBooksArray]];
+    NSArray *subBooks = [[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
     [self addOffsetToBreakPoint:displayDataCount];
     if(displayDataCount != 0)
     {
@@ -113,7 +118,7 @@
         
     }else
     {
-        [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView] :_bookModel]];
+        [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView] :bookModel]];
         [displayView setImageViewUrl:book.images.small];
         return YES;
     }
@@ -134,7 +139,7 @@
             break;
         Book *book = [displayBooks objectAtIndex:row*kSubViewCountInCell +i];
         
-        NSString *imagePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[_bookModel getBookKind]] stringByAppendingPathComponent:[[book.images.small componentsSeparatedByString:@"/"] lastObject]];
+        NSString *imagePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:[[book.images.small componentsSeparatedByString:@"/"] lastObject]];
         [self loadCellImage:displayView :imagePath :book];
         [self setCellImageFrmame:displayView :i];
         [cell.contentView addSubview:displayView];
@@ -148,8 +153,8 @@
     [self setBreakPointToZero];
     [displayBooks removeAllObjects];
     
-    NSInteger displayBooksCount = [self getBooksSegment:[_bookModel getBooksArray]];
-    [displayBooks addObjectsFromArray:[[_bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayBooksCount)]];
+    NSInteger displayBooksCount = [self getBooksSegment:[bookModel getBooksArray]];
+    [displayBooks addObjectsFromArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayBooksCount)]];
     [self addOffsetToBreakPoint:displayBooksCount];
     
     
@@ -165,10 +170,10 @@
 {
     NSString *identify  = @"cell";
     CustomTableViewCellForBookShelf *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    if(!cell)
-        cell = [[CustomTableViewCellForBookShelf alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     if(cell)
         [self clearExistCellContent:cell];
+    if(!cell)
+        cell = [[CustomTableViewCellForBookShelf alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     
     [self displayBooksOnCell:cell :indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -210,6 +215,6 @@
 }
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [_bookModel refresh];
+    [bookModel refresh :kBookShelfViewControllerName];
 }
 @end

@@ -27,6 +27,7 @@
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"bookId" forClass:[Book class]];
     
     self.flatViewController = [[FlatViewController alloc]init];
+    [self.flatViewController setRequestKind:@"american"];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];
     
@@ -63,8 +64,7 @@
     int count = [viewcontrollers count];
     if([[viewcontrollers objectAtIndex:count-1] isEqual:self.flatViewController])
     {
-        BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]init];
-        [bookShelfController setBookKind:[self.flatViewController getBookkind]];
+        BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]initWithBookInfoModel:[self.flatViewController getBookModel]];
         [self.navigationController pushViewController:bookShelfController animated:YES];
     }
 }

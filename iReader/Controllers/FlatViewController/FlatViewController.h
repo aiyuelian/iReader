@@ -25,16 +25,12 @@
     BooksInfo *bookModel;
 }
 
-@property (nonatomic,strong) BooksInfo *bookModel;
-@property (nonatomic,strong) NSMutableArray *displayBooks;
+//@property (nonatomic,strong) BooksInfo *bookModel;
 
-- (id)initWithArray :(NSArray*)parmBooks;
-
-//测试添加
+- (id)initWithModel :(BooksInfo*)parmBookModel;
 - (void)requestData;
 - (void)setRequestKind :(NSString*)kindName;
-- (void)refreshData;
-- (NSString*)getBookkind;
+- (BooksInfo*)getBookModel;
 
 
 @end

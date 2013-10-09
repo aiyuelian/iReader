@@ -24,10 +24,10 @@
     NSMutableArray *displayBooks;
 }
 
-@property (nonatomic,strong) BooksInfo *bookModel;
 
-- (id)initWithArray :(NSArray*)parmBooks;
-- (BOOL)setBookKind :(NSString*)parmBookKind;
-- (BOOL)request :(NSString*)controllerName;
+- (id)initWithBookInfoModel :(BooksInfo*)parmBookModel;
+- (void)requestData;
+- (void)setRequestKind :(NSString*)kindName;
+- (BooksInfo*)getBookModel;
 
 @end
