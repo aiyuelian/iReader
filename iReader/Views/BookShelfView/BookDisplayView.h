@@ -12,6 +12,7 @@
 
 @interface BookDisplayView : UIView<EGOImageViewDelegate>
 {
+    
     @private
     EGOImageView *egoImageView;
     LoadImageFinish loadImageFinish;
