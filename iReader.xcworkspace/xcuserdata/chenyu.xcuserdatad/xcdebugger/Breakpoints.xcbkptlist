@@ -297,8 +297,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "46"
          endingLineNumber = "46"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
+         landmarkName = "@implementation BookShelfViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -336,7 +336,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "71"
          endingLineNumber = "71"
-         landmarkName = "-rightButtonPressed"
+         landmarkName = "-setBookKind:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -362,8 +362,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "22"
          endingLineNumber = "22"
-         landmarkName = "-initWithArray:"
-         landmarkType = "5">
+         landmarkName = "@implementation BookShelfViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -531,7 +531,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "128"
          endingLineNumber = "128"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkName = "-displayBooksOnCell::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -544,8 +544,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "78"
          endingLineNumber = "78"
-         landmarkName = "-loadData"
-         landmarkType = "5">
+         landmarkName = "@implementation BookShelfViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
