@@ -380,9 +380,9 @@
 		DD528AF617F693B800F8A826 /* iReader */ = {
 			isa = PBXGroup;
 			children = (
+				DD0F9C291805500100FFAB40 /* AppDelegate */,
 				DD0F9BA618054D9D00FFAB40 /* Support Files */,
 				9A54C31217FFF5B10014B7E6 /* iReaderTests */,
-				DD0F9C291805500100FFAB40 /* AppDelegate */,
 				DD0F9B8618054AF700FFAB40 /* Models */,
 				DD528B6217F709E300F8A826 /* Controllers */,
 				DD528B6317F709E300F8A826 /* Views */,

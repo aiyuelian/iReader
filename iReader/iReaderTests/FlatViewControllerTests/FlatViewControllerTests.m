@@ -14,10 +14,8 @@
 - (void)test_Model_Request_Methond_Called_When_Controller_RequestData_Methond_Called
 {
     id bookModel = [OCMockObject mockForClass:[BooksInfo class]];
+    [[bookModel stub]getBooksArray];
     FlatViewController *flatViewController =[[FlatViewController alloc]initWithModel:bookModel];
-   
-    //[[bookModel stub]createcommunicator:[O];
-    //flatViewController.bookModel = bookModel;
     [[bookModel expect] request:[OCMArg any]];
     [flatViewController requestData];
     [bookModel verify];
