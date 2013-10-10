@@ -25,11 +25,11 @@
     BooksInfo *bookModel;
 }
 
-//@property (nonatomic,strong) BooksInfo *bookModel;
-
 - (id)initWithModel :(BooksInfo*)parmBookModel;
-- (void)requestData;
+
 - (void)setRequestKind :(NSString*)kindName;
+- (void)requestData;
+
 - (BooksInfo*)getBookModel;
 
 

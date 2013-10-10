@@ -148,8 +148,7 @@
     if(displayDataCount != 0)
     {
         [displayBooks addObjectsFromArray:subBooks];
-        [self.m_flatListView reloadData];
-        
+        [self.m_flatListView reloadData]; 
     }
     [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
     return YES;
@@ -201,7 +200,6 @@
 
 
 #pragma mark - 下拉刷新，上拉加载代理
-
 
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
