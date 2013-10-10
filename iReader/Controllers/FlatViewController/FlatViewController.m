@@ -62,6 +62,7 @@
     if([bookModel getBookKind] != nil && ![bookModel getBooksArray]){
          [self requestData];
     }
+    
     [self.view addSubview:self.m_flatListView];
 }
 - (void)didReceiveMemoryWarning
@@ -140,8 +141,9 @@
 }
 - (BOOL)loadMoreData
 {
-    NSInteger displayDataCount = [self getBooksSegment:[bookModel getBooksArray]];
-    NSArray *subBooks = [[bookModel getBooksArray] subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+    NSArray *booksArray = [bookModel getBooksArray];
+    NSInteger displayDataCount = [self getBooksSegment:booksArray];
+    NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
     [self addOffsetToBreakPoint:displayDataCount];
     if(displayDataCount != 0)
     {

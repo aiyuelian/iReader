@@ -20,7 +20,11 @@
 {
     self = [super init];
     if(self)
+    {
         m_breakPoint = 0;
+        self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385)];
+        self.m_flatListView.pullDelegate = self;
+    }
     return self;
 }
 
@@ -35,8 +39,8 @@
     //self.navigationItem.rightBarButtonItem = btnItem;
     [self.navigationItem setHidesBackButton:YES];
     
-    self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385)];
-    self.m_flatListView.pullDelegate = self;
+    
+   
     [self.view addSubview:self.m_flatListView];
     self.m_flatListView.delegate = self;
     self.m_flatListView.dataSource = self;
