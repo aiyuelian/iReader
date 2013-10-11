@@ -36,14 +36,12 @@
     {
         displayBooks = [[NSMutableArray alloc]init];
          bookModel = [[BooksInfo alloc]init];
-        //[bookModel setBookdArray:nil];
-        //[bookModel setBookKind:nil];
     }      
     return self;
 }
-- (void)requestData
+- (BOOL)requestData
 {
-    [bookModel request :kFlatViewControllerName];
+   return [bookModel request :kFlatViewControllerName];
 }
 - (void)setRequestKind:(NSString *)kindName
 {

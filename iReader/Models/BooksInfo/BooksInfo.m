@@ -58,6 +58,7 @@
 
 - (BOOL)request:(NSString*)controllerName
 {
+    if(bookKind == nil) return NO;
     self.currentController = controllerName;
     [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
     [_communicator start :YES];

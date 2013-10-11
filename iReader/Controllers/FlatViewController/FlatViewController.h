@@ -28,7 +28,7 @@
 - (id)initWithModel :(BooksInfo*)parmBookModel;
 
 - (void)setRequestKind :(NSString*)kindName;
-- (void)requestData;
+- (BOOL)requestData;
 
 
 - (BooksInfo*)getBookModel;
