@@ -24,7 +24,8 @@
 - (id)initWithBookInfoModel:(BooksInfo *)parmBookModel
 {
     self = [super init];
-    if(self){
+    if(self)
+    {
         bookModel = parmBookModel;
         displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
         [self addOffsetToBreakPoint:kSegmentCount];
@@ -39,8 +40,6 @@
     {
         displayBooks = [[NSMutableArray alloc]init];
         bookModel = [[BooksInfo alloc]init];
-        //[bookModel setBookdArray:nil];
-        //[bookModel setBookKind:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
@@ -62,7 +61,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - 接口函数

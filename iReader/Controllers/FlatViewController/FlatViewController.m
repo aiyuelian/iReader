@@ -54,18 +54,22 @@
 
 
 #pragma mark - 默认方法
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-     [super viewDidLoad];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
+    
+    if(!bookModel || ![bookModel getBookKind]) return;
     if([bookModel getBookKind] && ![bookModel getBooksArray]){
-         [self requestData];
+        [bookModel request:kFlatViewControllerName];
     }else
     {
         displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
         [self addOffsetToBreakPoint:kSegmentCount];
     }
-    
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     [self.view addSubview:self.m_flatListView];
 }
 - (void)didReceiveMemoryWarning

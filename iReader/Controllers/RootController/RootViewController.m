@@ -41,7 +41,7 @@
     
     
    
-    [self.view addSubview:self.m_flatListView];
+    //[self.view addSubview:self.m_flatListView];
     self.m_flatListView.delegate = self;
     self.m_flatListView.dataSource = self;
     
