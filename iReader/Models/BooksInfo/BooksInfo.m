@@ -50,7 +50,7 @@
 }
 - (BOOL)refresh :(NSString*)controllerName
 {
-    //self.currentController = controllerName;
+    self.currentController = controllerName;
     [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
     [_communicator start :NO];
     return YES;
