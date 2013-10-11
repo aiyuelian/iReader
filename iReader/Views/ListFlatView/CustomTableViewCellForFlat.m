@@ -38,6 +38,10 @@
 }
 
 #pragma mark - 公有方法
+- (LoadImageFinish)getImageLoadFinishBlock
+{
+    return loadFinish;
+}
 - (BOOL)setAuthorText :(NSArray*)authorArray
 {
     author.text = @"作者:";

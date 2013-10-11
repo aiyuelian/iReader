@@ -31,4 +31,6 @@
 
 - (BOOL)setImageLoad :(LoadImageFinish)loadFinishBlock;
 
+- (LoadImageFinish)getImageLoadFinishBlock;
+
 @end

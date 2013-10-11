@@ -15,6 +15,7 @@
 #import "BooksInfo.h"
 #import "RootViewController.h"
 #import "BookShelfViewController.h"
+#import "CustomTableViewCellForFlat.h"
 
 
 
@@ -30,7 +31,7 @@
 - (void)setRequestKind :(NSString*)kindName;
 - (BOOL)requestData;
 
-
+- (NSArray*)getCurrentDisplayBooks;
 - (BooksInfo*)getBookModel;
 
 

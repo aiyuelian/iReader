@@ -7,7 +7,7 @@
 //
 
 #import "FlatViewController.h"
-#import "CustomTableViewCellForFlat.h"
+
 
 @interface FlatViewController ()
 
@@ -50,6 +50,12 @@
 - (BooksInfo*)getBookModel
 {
     return bookModel;
+}
+
+- (NSArray*)getCurrentDisplayBooks
+{
+    if([displayBooks count] > 0) return [NSArray arrayWithArray:displayBooks];
+    return nil;
 }
 
 
