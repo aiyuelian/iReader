@@ -20,6 +20,8 @@
     {
         _communicator = [[Communicator alloc]init];
         _communicator.delegate = self;
+        bookKind = nil;
+        bookArray = nil;
     }
     return self;
 }
@@ -29,15 +31,6 @@
     return [NSArray arrayWithArray:bookArray];
 }
 
-- (BOOL)setBookdArray:(NSArray *)parmBookArray
-{
-    if(!parmBookArray){
-        bookArray = nil;
-        return NO;
-    }
-    bookArray = [NSArray arrayWithArray:parmBookArray];
-    return YES;
-}
 
 - (NSString*)getBookKind
 {
@@ -57,7 +50,7 @@
 }
 - (BOOL)refresh :(NSString*)controllerName
 {
-    self.currentController = controllerName;
+    //self.currentController = controllerName;
     [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
     [_communicator start :NO];
     return YES;
@@ -98,6 +91,10 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:kflatViewRefreshNotifiCationName object:nil];
     if([self.currentController isEqualToString:kBookShelfViewControllerName])
         [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
+}
+- (void)connectedError:(NSError *)error
+{
+    
 }
 
 - (void)parseCount:(int)count

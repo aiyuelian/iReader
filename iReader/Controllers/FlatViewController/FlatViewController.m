@@ -25,8 +25,7 @@
     if(self)
     {
         bookModel = parmBookModel;
-        displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
-        [self addOffsetToBreakPoint:kSegmentCount];
+       
     }
     return self;
 }
@@ -37,8 +36,8 @@
     {
         displayBooks = [[NSMutableArray alloc]init];
          bookModel = [[BooksInfo alloc]init];
-        [bookModel setBookdArray:nil];
-        [bookModel setBookKind:nil];
+        //[bookModel setBookdArray:nil];
+        //[bookModel setBookKind:nil];
     }      
     return self;
 }
@@ -54,13 +53,19 @@
 {
     return bookModel;
 }
+
+
 #pragma mark - 默认方法
 - (void)viewDidLoad
 {
      [super viewDidLoad];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
-    if([bookModel getBookKind] != nil && ![bookModel getBooksArray]){
+    if([bookModel getBookKind] && ![bookModel getBooksArray]){
          [self requestData];
+    }else
+    {
+        displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
+        [self addOffsetToBreakPoint:kSegmentCount];
     }
     
     [self.view addSubview:self.m_flatListView];
@@ -107,6 +112,21 @@
 }
 #pragma mark - 私有方法
 
+- (BOOL)loadMoreData
+{
+    NSArray *booksArray = [bookModel getBooksArray];
+    NSInteger displayDataCount = [self getBooksSegment:booksArray];
+    NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+    [self addOffsetToBreakPoint:displayDataCount];
+    if(displayDataCount != 0)
+    {
+        [displayBooks addObjectsFromArray:subBooks];
+        [self.m_flatListView reloadData];
+    }
+    [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
+    return YES;
+}
+
 - (void)configCellTitleAndAuthor :(CustomTableViewCellForFlat*)cell :(Book*)book
 {
     [cell setTitleFrame:CGRectMake(90, 0,230, 30)];
@@ -139,20 +159,7 @@
     }
     
 }
-- (BOOL)loadMoreData
-{
-    NSArray *booksArray = [bookModel getBooksArray];
-    NSInteger displayDataCount = [self getBooksSegment:booksArray];
-    NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
-    [self addOffsetToBreakPoint:displayDataCount];
-    if(displayDataCount != 0)
-    {
-        [displayBooks addObjectsFromArray:subBooks];
-        [self.m_flatListView reloadData]; 
-    }
-    [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
-    return YES;
-}
+
 - (NSString*)getImagePath :(NSString*)orgUrl
 {
     NSArray *subStrArray = [orgUrl componentsSeparatedByString:@"/"];
@@ -208,6 +215,7 @@
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
+     //[bookModel getBooksArray_];
     [self loadMoreData];
 }
 

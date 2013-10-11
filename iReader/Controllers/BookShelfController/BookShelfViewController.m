@@ -39,8 +39,8 @@
     {
         displayBooks = [[NSMutableArray alloc]init];
         bookModel = [[BooksInfo alloc]init];
-        [bookModel setBookdArray:nil];
-        [bookModel setBookKind:nil];
+        //[bookModel setBookdArray:nil];
+        //[bookModel setBookKind:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;

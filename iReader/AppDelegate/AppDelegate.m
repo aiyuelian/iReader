@@ -27,7 +27,7 @@
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"bookId" forClass:[Book class]];
     
     self.flatViewController = [[FlatViewController alloc]init];
-    [self.flatViewController setRequestKind:@"american"];
+    [self.flatViewController setRequestKind:@"php"];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];
     

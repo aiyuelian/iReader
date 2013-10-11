@@ -24,7 +24,7 @@
 @property (nonatomic,strong) Communicator *communicator;
 
 - (BOOL)refresh :(NSString*)controllerName;
-- (BOOL)setBookdArray :(NSArray*)bookArray;
+//- (BOOL)setBookdArray :(NSArray*)bookArray;
 - (BOOL)setBookKind :(NSString*)parmBookKind;
 - (BOOL)request:(NSString*)controllerName;
 

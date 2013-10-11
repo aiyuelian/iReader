@@ -49,9 +49,8 @@
 }
 - (BOOL)start :(BOOL)isCheckedLocal
 {
-    if(isCheckedLocal)
-    {
-        if([self checkLocalCache]) return NO;
+    if(isCheckedLocal && [self checkLocalCache]){
+         return NO;
     }
     [_request startAsynchronous];
     return YES;
@@ -88,7 +87,7 @@
 - (NSString*)getDocFirstDirFilePath :(NSString*)dirName :(NSString*)fileName
 {
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    if(!dirName)
+    if(dirName)
        documentPath = [documentPath stringByAppendingPathComponent:dirName];
     documentPath = [documentPath stringByAppendingPathComponent:fileName];
     return documentPath;

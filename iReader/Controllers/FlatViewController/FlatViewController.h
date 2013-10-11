@@ -30,7 +30,9 @@
 - (void)setRequestKind :(NSString*)kindName;
 - (void)requestData;
 
+
 - (BooksInfo*)getBookModel;
+
 
 
 @end
