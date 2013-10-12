@@ -95,7 +95,11 @@
 }
 - (void)connectedError:(NSError *)error
 {
-    
+    if([self.currentController isEqualToString:kFlatViewControllerName]){
+        [[NSNotificationCenter defaultCenter]postNotificationName:kFlatViewControllerError object:error];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:kBookShelfControllerError object:error];
+    }
 }
 
 - (void)parseCount:(int)count

@@ -17,6 +17,7 @@
 
 #define kFlatViewControllerName  @"FlatViewController"
 
+
 #pragma mark - iReaderManager
 
 #define kiRMRefash @"refash"
@@ -26,6 +27,8 @@
 
 #define kflatViewRefreshNotifiCationName @"flatViewRefresh"
 #define kBookViewRefreshNotificationName @"bookViewRfresh"
+#define kFlatViewControllerError @"kFlatViewControllerError"
+#define kBookShelfControllerError @"kBookShelfControllerError"
 #define kBookKindName @"bookKindName"
 
 #pragma mark - BookShelfViewController

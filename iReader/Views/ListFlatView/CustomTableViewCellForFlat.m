@@ -26,6 +26,7 @@
         //self.imageView.image = imageView.image;
         [self addSubview:title];
         [self addSubview:author];
+        loadFinish = nil;
     }
     return self;
 }

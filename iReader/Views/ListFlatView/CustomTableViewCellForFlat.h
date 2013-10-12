@@ -22,6 +22,7 @@
 
 @property(nonatomic,weak) id<EGOImageViewDelegate> delegate;
 
+
 - (EGOImageView*)getImageView;
 - (BOOL)setImageViewUrl :(NSString*)url;
 - (BOOL)setTitleText :(NSString*)text;

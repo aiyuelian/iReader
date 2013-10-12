@@ -17,7 +17,6 @@
 {
     @protected
     NSInteger m_breakPoint;
-    //PullTableView *m_flatListView;
 }
 @property (nonatomic,strong) PullTableView *m_flatListView;
 - (BOOL)setBreakPointToZero;

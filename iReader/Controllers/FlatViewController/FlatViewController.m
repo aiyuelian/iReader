@@ -62,8 +62,6 @@
 #pragma mark - 默认方法
 - (void)viewWillAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
-    
     if(!bookModel || ![bookModel getBookKind]) return;
     if([bookModel getBookKind] && ![bookModel getBooksArray]){
         [bookModel request:kFlatViewControllerName];
@@ -75,6 +73,8 @@
 }
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kFlatViewControllerError object:nil];
     [super viewDidLoad];
     [self.view addSubview:self.m_flatListView];
 }
@@ -96,7 +96,11 @@
 {
     CustomTableViewCellForFlat *cell = [tableView dequeueReusableCellWithIdentifier:kFVCCellIdentifier];
     if(cell == nil)
-        cell = [[CustomTableViewCellForFlat alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFVCCellIdentifier];
+    {
+       cell = [[CustomTableViewCellForFlat alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFVCCellIdentifier];
+       [cell setImageLoad:nil];
+    }
+        
     if([[bookModel getBooksArray] count]< indexPath.row+1) return nil;
     Book *book = [[bookModel getBooksArray] objectAtIndex:indexPath.row];
     
@@ -213,6 +217,15 @@
     return YES;
 }
 
+#pragma mark - 联网失败
+
+- (void)requestUnSuccess :(NSNotification*)notification
+{
+     self.m_flatListView.pullTableIsRefreshing = NO;
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"请求失败" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
+
 
 #pragma mark - 下拉刷新，上拉加载代理
 
@@ -232,5 +245,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kflatViewRefreshNotifiCationName object:nil];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFlatViewControllerError object:nil];
 }
 @end
