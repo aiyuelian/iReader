@@ -29,7 +29,6 @@
         bookModel = parmBookModel;
         displayBooks = [[NSMutableArray alloc]initWithArray:[[bookModel getBooksArray] subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
         [self addOffsetToBreakPoint:kSegmentCount];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
     }
     return self;
 }
@@ -40,7 +39,7 @@
     {
         displayBooks = [[NSMutableArray alloc]init];
         bookModel = [[BooksInfo alloc]init];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
+       
     }
     return self;
 }
@@ -48,6 +47,8 @@
 #pragma mark - 系统函数
 - (void)viewDidLoad
 {
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kBookShelfControllerError object:nil];
     self.m_flatListView.pullLastRefreshDate = [NSDate date];
     if([bookModel getBooksArray] == nil && [bookModel getBookKind] != nil){
         [self requestData];
@@ -144,6 +145,12 @@
 
 #pragma mark - 接收通知函数
 
+- (void)requestUnSuccess :(NSNotification*)notification
+{
+    self.m_flatListView.pullTableIsRefreshing = NO;
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"请求失败" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    [alertView show];
+}
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
     [self setBreakPointToZero];
@@ -194,14 +201,6 @@
     return displayBooks.count / kSubViewCountInCell + 1;
 }
 
-#pragma mark - 接口方法
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookViewRefreshNotificationName object:nil];
-}
-
-
 
 #pragma mark - 下拉刷新上拉加载的Delegate
 
@@ -212,5 +211,11 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     [bookModel refresh :kBookShelfViewControllerName];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookViewRefreshNotificationName object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookShelfControllerError object:nil];
 }
 @end
