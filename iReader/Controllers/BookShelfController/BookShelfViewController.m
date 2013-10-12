@@ -48,15 +48,13 @@
 #pragma mark - 系统函数
 - (void)viewDidLoad
 {
-   
-    
+    self.m_flatListView.pullLastRefreshDate = [NSDate date];
     if([bookModel getBooksArray] == nil && [bookModel getBookKind] != nil){
         [self requestData];
     }
-    [super viewDidLoad];
-     [self.view addSubview:self.m_flatListView];
-    
     [self.navigationItem setHidesBackButton:YES];
+    [super viewDidLoad];
+    [self.view addSubview:self.m_flatListView];
 }
 - (void)didReceiveMemoryWarning
 {
