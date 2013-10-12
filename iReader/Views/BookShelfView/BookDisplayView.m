@@ -15,8 +15,6 @@
     self = [super init];
     if (self) {
         egoImageView = [[EGOImageView alloc]init];
-        self.freshControl = [[UIRefreshControl alloc]init];
-        //[self addSubview:self.freshControl];
         
         self.frame = CGRectMake(20, 10, 72, 90);
         egoImageView.frame = self.frame;
@@ -50,7 +48,6 @@
         [view removeFromSuperview];
     }
     UIView *newView = [[UIImageView alloc]initWithImage:image];
-    //CGRect rect = newView.frame;
     [self addSubview:newView];
     return YES;
 }

@@ -22,18 +22,15 @@
 - (id)initWithModel:(BooksInfo *)parmBookModel
 {
     self = [super init];
-    if(self)
-    {
+    if(self){
         bookModel = parmBookModel;
-       
     }
     return self;
 }
 - (id)init
 {
     self = [super init];
-    if(self)
-    {
+    if(self){
         displayBooks = [[NSMutableArray alloc]init];
          bookModel = [[BooksInfo alloc]init];
     }      
@@ -236,7 +233,6 @@
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
-     //[bookModel getBooksArray_];
     [self loadMoreData];
 }
 
@@ -245,6 +241,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kflatViewRefreshNotifiCationName object:nil];
-     [[NSNotificationCenter defaultCenter] removeObserver:self name:kFlatViewControllerError object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFlatViewControllerError object:nil];
 }
 @end

@@ -24,7 +24,6 @@
     NSMutableArray *displayBooks;
 }
 
-
 - (id)initWithBookInfoModel :(BooksInfo*)parmBookModel;
 - (void)requestData;
 - (void)setRequestKind :(NSString*)kindName;

@@ -16,11 +16,7 @@
     @private
     EGOImageView *egoImageView;
     LoadImageFinish loadImageFinish;
-    ;
 }
-
-@property(nonatomic,strong) UIRefreshControl *freshControl;
-
 - (BOOL)setImageViewUrl :(NSString*)url;
 - (BOOL)setImageViewPic :(UIImage*)image;
 - (BOOL)setLoadImageFinish :(LoadImageFinish)finishblock;
