@@ -24,7 +24,6 @@
     @private
     NSMutableArray *displayBooks;
     BooksInfo *bookModel;
-    NSTimer *timer;
 }
 
 - (id)initWithModel :(BooksInfo*)parmBookModel;

@@ -48,6 +48,10 @@
 		DD528B1A17F693B800F8A826 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528AF217F693B800F8A826 /* Foundation.framework */; };
 		DD528B2F17F6A37200F8A826 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528B2E17F6A37200F8A826 /* CoreData.framework */; };
 		DD528B3117F6A38500F8A826 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD528B3017F6A38500F8A826 /* Security.framework */; };
+		DD8D6044180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D603D180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.m */; };
+		DD8D6045180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D603F180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m */; };
+		DD8D6046180D7FAA00F6EAD8 /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D6041180D7FAA00F6EAD8 /* MessageInterceptor.m */; };
+		DD8D6047180D7FAA00F6EAD8 /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D6043180D7FAA00F6EAD8 /* PullTableView.m */; };
 		DDD8A69C17F9A359006E5444 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD8A69B17F9A359006E5444 /* CFNetwork.framework */; };
 		DDF714C017FC030700360692 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF714BF17FC030700360692 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +127,14 @@
 		DD528B1717F693B800F8A826 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DD528B2E17F6A37200F8A826 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DD528B3017F6A38500F8A826 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DD8D603C180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		DD8D603D180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		DD8D603E180D7FAA00F6EAD8 /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		DD8D603F180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		DD8D6040180D7FAA00F6EAD8 /* MessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterceptor.h; sourceTree = "<group>"; };
+		DD8D6041180D7FAA00F6EAD8 /* MessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterceptor.m; sourceTree = "<group>"; };
+		DD8D6042180D7FAA00F6EAD8 /* PullTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableView.h; sourceTree = "<group>"; };
+		DD8D6043180D7FAA00F6EAD8 /* PullTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullTableView.m; sourceTree = "<group>"; };
 		DDD8A69B17F9A359006E5444 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DDF714BF17FC030700360692 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -242,6 +254,7 @@
 		DD0F9BA618054D9D00FFAB40 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD8D603B180D7FAA00F6EAD8 /* PullRefreshTableView */,
 				DD0F9BB018054D9D00FFAB40 /* Images */,
 				DD0F9BA918054D9D00FFAB40 /* Communicator */,
 				DD0F9BA718054D9D00FFAB40 /* BlockDef */,
@@ -410,6 +423,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DD8D603B180D7FAA00F6EAD8 /* PullRefreshTableView */ = {
+			isa = PBXGroup;
+			children = (
+				DD8D603C180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.h */,
+				DD8D603D180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.m */,
+				DD8D603E180D7FAA00F6EAD8 /* LoadMoreTableFooterView.h */,
+				DD8D603F180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m */,
+				DD8D6040180D7FAA00F6EAD8 /* MessageInterceptor.h */,
+				DD8D6041180D7FAA00F6EAD8 /* MessageInterceptor.m */,
+				DD8D6042180D7FAA00F6EAD8 /* PullTableView.h */,
+				DD8D6043180D7FAA00F6EAD8 /* PullTableView.m */,
+			);
+			name = PullRefreshTableView;
+			path = "iReader/Support Files/PullRefreshTableView";
+			sourceTree = SOURCE_ROOT;
+		};
 		DDE01B9B17FDA4E200FCDDB2 /* RootController */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,18 +604,22 @@
 				DD0F9BA118054C8A00FFAB40 /* BookShelfViewController.m in Sources */,
 				DD0F9BA418054C9800FFAB40 /* FlatViewController.m in Sources */,
 				DD0F9BDF18054E8000FFAB40 /* main.m in Sources */,
+				DD8D6047180D7FAA00F6EAD8 /* PullTableView.m in Sources */,
 				DD0F9C2718054FD500FFAB40 /* Communicator.m in Sources */,
 				9A73836218078CAE00CB6BD9 /* FlatViewControllerTests.m in Sources */,
 				9A73836518078CC700CB6BD9 /* RootViewController.m in Sources */,
 				9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */,
 				9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */,
 				9A73836D18078D8900CB6BD9 /* CustomTableViewCellForFlat.m in Sources */,
+				DD8D6046180D7FAA00F6EAD8 /* MessageInterceptor.m in Sources */,
 				9A73837018078D9D00CB6BD9 /* AppDelegate.m in Sources */,
 				9A73837418078F3E00CB6BD9 /* Book.m in Sources */,
 				9A73837718078F7400CB6BD9 /* BooksInfo.m in Sources */,
+				DD8D6044180D7FAA00F6EAD8 /* EGORefreshTableHeaderView.m in Sources */,
 				9A73837A18078F8100CB6BD9 /* Image.m in Sources */,
 				9A73837D18078F8B00CB6BD9 /* Rating.m in Sources */,
 				9A73837F18078F9700CB6BD9 /* Tag.m in Sources */,
+				DD8D6045180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

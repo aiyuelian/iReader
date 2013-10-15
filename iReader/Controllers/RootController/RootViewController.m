@@ -22,7 +22,7 @@
     if(self)
     {
         m_breakPoint = 0;
-        self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385)];
+        self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
         self.m_flatListView.pullDelegate = self;
     }
     return self;
