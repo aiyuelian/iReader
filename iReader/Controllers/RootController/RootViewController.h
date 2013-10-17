@@ -17,9 +17,11 @@
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>
 {
     @protected
-    NSInteger m_breakPoint;
+   // NSInteger m_breakPoint;
 }
 @property (nonatomic,strong) PullTableView *m_flatListView;
+@property NSInteger breakPoint;
+
 - (BOOL)setBreakPointToZero;
 - (BOOL)addOffsetToBreakPoint :(NSInteger)offset;
 - (NSInteger)getBooksSegment :(NSArray*)books;

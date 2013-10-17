@@ -10,7 +10,6 @@
 
 @implementation BooksInfo
 
-@synthesize communicator = _communicator;
 
 #pragma mark - 接口方法
 - (id)init
@@ -18,50 +17,28 @@
     self = [super init];
     if(self)
     {
-        _communicator = [[Communicator alloc]init];
-        _communicator.delegate = self;
-        bookKind = nil;
-        bookArray = nil;
+        self.communicator = [[Communicator alloc]init];
+        self.communicator.delegate = self;
+        self.bookKind = nil;
+        self.bookArray = nil;
     }
     return self;
 }
-- (NSArray*)getBooksArray
-{
-    if(!bookArray) return nil;
-    return [NSArray arrayWithArray:bookArray];
-}
 
-
-- (NSString*)getBookKind
-{
-    if(!bookKind) return nil;
-    return [NSString stringWithString:bookKind];
-}
-
-- (BOOL)setBookKind:(NSString *)parmBookKind
-{
-    if(!parmBookKind)
-    {
-        bookKind = nil;
-        return NO;
-    }
-    bookKind = [NSString stringWithString:parmBookKind];
-    return YES;
-}
 - (BOOL)refresh :(NSString*)controllerName
 {
     self.currentController = controllerName;
-    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
-    [_communicator start :NO];
+    [self.communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",self.bookKind]]];;
+    [self.communicator start :NO];
     return YES;
 }
 
 - (BOOL)request:(NSString*)controllerName
 {
-    if(bookKind == nil) return NO;
+    if(self.bookKind == nil) return NO;
     self.currentController = controllerName;
-    [_communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookKind]]];;
-    [_communicator start :YES];
+    [self.communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",self.bookKind]]];;
+    [self.communicator start :YES];
     return YES;
 }
 
@@ -81,12 +58,12 @@
 - (void)parseFinish:(NSMutableArray *)books
 {
     NSError *error = nil;
-    NSString *path = [self createDir:bookKind :error];
-    NSString *plistName = [bookKind stringByAppendingString:@".plist"];
+    NSString *path = [self createDir:self.bookKind :error];
+    NSString *plistName = [self.bookKind stringByAppendingString:@".plist"];
     path = [path stringByAppendingPathComponent:plistName];
     [NSKeyedArchiver archiveRootObject:books toFile:path];
     
-    bookArray = [NSArray arrayWithArray:books];
+    self.bookArray = [NSArray arrayWithArray:books];
     
     if([self.currentController isEqualToString:kFlatViewControllerName])
         [[NSNotificationCenter defaultCenter]postNotificationName:kflatViewRefreshNotifiCationName object:nil];

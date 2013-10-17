@@ -13,22 +13,12 @@
 #import "iReadercommunicatorDelegate.h"
 
 @interface BooksInfo : NSObject<iReadercommunicatorDelegate>
-{
-    @private
-    NSString *bookKind;
-    NSArray *bookArray;
-    Communicator *communicator;
-}
 
+@property (nonatomic,strong) NSString *bookKind;
+@property (nonatomic,strong) NSArray *bookArray;
 @property (nonatomic,strong) NSString *currentController;
 @property (nonatomic,strong) Communicator *communicator;
 
 - (BOOL)refresh :(NSString*)controllerName;
-- (BOOL)setBookKind :(NSString*)parmBookKind;
 - (BOOL)request:(NSString*)controllerName;
-
-- (NSString*)getBookKind;
-
-- (NSArray*)getBooksArray;
-
 @end

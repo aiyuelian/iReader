@@ -12,7 +12,7 @@
 
 + (CGRect)getFrameAccordingIOSVersion:(CGRect)frame
 {
-    float version = [[[UIDevice currentDevice]systemVersion] floatValue];
+    //float version = [[[UIDevice currentDevice]systemVersion] floatValue];
     CGRect screenFrame = [[UIScreen mainScreen]bounds];
     if(screenFrame.size.height == 568)
     {

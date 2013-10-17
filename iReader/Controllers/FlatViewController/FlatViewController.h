@@ -20,20 +20,13 @@
 
 
 @interface FlatViewController :RootViewController
-{
-    @private
-    NSMutableArray *displayBooks;
-    BooksInfo *bookModel;
-}
+
+@property (nonatomic,strong) NSMutableArray *displayBooks;
+@property (nonatomic,strong) BooksInfo *bookModel;
 
 - (id)initWithModel :(BooksInfo*)parmBookModel;
 
 - (void)setRequestKind :(NSString*)kindName;
 - (BOOL)requestData;
-
-- (NSArray*)getCurrentDisplayBooks;
-- (BooksInfo*)getBookModel;
-
-
 
 @end

@@ -21,7 +21,7 @@
     self = [super init];
     if(self)
     {
-        m_breakPoint = 0;
+        self.breakPoint = 0;
         CGRect frame;
         if([[[UIDevice currentDevice] systemVersion] floatValue] >= kIOS_7){
             frame = CGRectMake(0, 0, 320, 440);
@@ -67,19 +67,19 @@
 
 - (BOOL)setBreakPointToZero
 {
-    m_breakPoint = 0;
+    self.breakPoint = 0;
     return YES;
 }
 
 - (BOOL)addOffsetToBreakPoint:(NSInteger)offset
 {
-    m_breakPoint += offset;
+    self.breakPoint += offset;
     NSLog(@"addOffsetToBreakPoint:%d",offset);
     return YES;
 }
 - (NSInteger)getBooksSegment :(NSArray*)parmBooks
 {
-    NSInteger bookCount = parmBooks.count - m_breakPoint;
+    NSInteger bookCount = parmBooks.count - self.breakPoint;
     if(bookCount <= 0) return 0;
     if(bookCount <= kSegmentCount)
         return bookCount;
@@ -148,7 +148,7 @@
         
         NSString *url = [parmimageView.imageURL absoluteString];
         NSString *imageName = [[url componentsSeparatedByString:@"/"] lastObject];
-        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[bookModel getBookKind]] stringByAppendingPathComponent:imageName];
+        NSString *imageFilePath = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:bookModel.bookKind] stringByAppendingPathComponent:imageName];
         if(![[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
         {
             NSData *data =UIImageJPEGRepresentation(parmimageView.image, 1.f);

@@ -64,7 +64,7 @@
     int count = [viewcontrollers count];
     if([[viewcontrollers objectAtIndex:count-1] isEqual:self.flatViewController])
     {
-        BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]initWithBookInfoModel:[self.flatViewController getBookModel]];
+        BookShelfViewController *bookShelfController = [[BookShelfViewController alloc]initWithBookInfoModel:self.flatViewController.bookModel];
         [self.navigationController pushViewController:bookShelfController animated:YES];
     }
 }

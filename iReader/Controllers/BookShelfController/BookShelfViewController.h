@@ -18,15 +18,13 @@
 
 
 @interface BookShelfViewController : RootViewController
-{
-    @private
-    BooksInfo *bookModel;
-    NSMutableArray *displayBooks;
-}
+
+
+@property (nonatomic,strong) BooksInfo *bookModel;
+@property (nonatomic,strong) NSMutableArray *displayBooks;
 
 - (id)initWithBookInfoModel :(BooksInfo*)parmBookModel;
 - (void)requestData;
 - (void)setRequestKind :(NSString*)kindName;
-- (BooksInfo*)getBookModel;
 
 @end
