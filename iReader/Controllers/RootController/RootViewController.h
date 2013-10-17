@@ -11,6 +11,7 @@
 #import "EGOImageView.h"
 #import "BlockDef.h"
 #import "BooksInfo.h"
+#import "AutoLayoutControl.h"
 
 
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>

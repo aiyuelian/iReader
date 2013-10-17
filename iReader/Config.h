@@ -8,7 +8,7 @@
 
 #ifndef iReader_Config_h
 #define iReader_Config_h
-
+#define kIOS_7 7.0
 #pragma mark - FlatViewController
 
 #define kFVCNotifyModelChange @"modelChange"

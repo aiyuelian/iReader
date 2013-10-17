@@ -11,6 +11,7 @@
 #import "FlatViewController.h"
 #import "Book.h"
 #import "BookShelfViewController.h"
+#import "AutoLayoutControl.h"
 
 @class FlatViewController;
 

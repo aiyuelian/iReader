@@ -10,7 +10,9 @@
 
 
 @interface FlatViewController ()
-
+{
+    BOOL shouldExecutionviewWillAppearCode;
+}
 @end
 
 @implementation FlatViewController
@@ -24,6 +26,7 @@
     self = [super init];
     if(self){
         bookModel = parmBookModel;
+        shouldExecutionviewWillAppearCode = YES;
     }
     return self;
 }
@@ -33,6 +36,7 @@
     if(self){
         displayBooks = [[NSMutableArray alloc]init];
          bookModel = [[BooksInfo alloc]init];
+        shouldExecutionviewWillAppearCode = YES;
     }      
     return self;
 }
@@ -59,6 +63,8 @@
 #pragma mark - 默认方法
 - (void)viewWillAppear:(BOOL)animated
 {
+    if(!shouldExecutionviewWillAppearCode) return;
+    shouldExecutionviewWillAppearCode = NO;
     if(!bookModel || ![bookModel getBookKind]) return;
     if([bookModel getBookKind] && ![bookModel getBooksArray]){
         [bookModel request:kFlatViewControllerName];
@@ -125,10 +131,10 @@
 {
     NSArray *booksArray = [bookModel getBooksArray];
     NSInteger displayDataCount = [self getBooksSegment:booksArray];
-    NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
-    [self addOffsetToBreakPoint:displayDataCount];
     if(displayDataCount != 0)
     {
+        NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(m_breakPoint, displayDataCount)];
+        [self addOffsetToBreakPoint:displayDataCount];
         [displayBooks addObjectsFromArray:subBooks];
         [self.m_flatListView reloadData];
     }

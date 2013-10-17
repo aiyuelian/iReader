@@ -52,6 +52,7 @@
 		DD8D6045180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D603F180D7FAA00F6EAD8 /* LoadMoreTableFooterView.m */; };
 		DD8D6046180D7FAA00F6EAD8 /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D6041180D7FAA00F6EAD8 /* MessageInterceptor.m */; };
 		DD8D6047180D7FAA00F6EAD8 /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8D6043180D7FAA00F6EAD8 /* PullTableView.m */; };
+		DD9B573E180FFA770069514D /* AutoLayoutControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9B573D180FFA770069514D /* AutoLayoutControl.m */; };
 		DDD8A69C17F9A359006E5444 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD8A69B17F9A359006E5444 /* CFNetwork.framework */; };
 		DDF714C017FC030700360692 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF714BF17FC030700360692 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -135,6 +136,8 @@
 		DD8D6041180D7FAA00F6EAD8 /* MessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInterceptor.m; sourceTree = "<group>"; };
 		DD8D6042180D7FAA00F6EAD8 /* PullTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableView.h; sourceTree = "<group>"; };
 		DD8D6043180D7FAA00F6EAD8 /* PullTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullTableView.m; sourceTree = "<group>"; };
+		DD9B573C180FFA770069514D /* AutoLayoutControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutControl.h; sourceTree = "<group>"; };
+		DD9B573D180FFA770069514D /* AutoLayoutControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutControl.m; sourceTree = "<group>"; };
 		DDD8A69B17F9A359006E5444 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DDF714BF17FC030700360692 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -254,6 +257,7 @@
 		DD0F9BA618054D9D00FFAB40 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD9B573B180FFA570069514D /* AutoLayoutControl */,
 				DD8D603B180D7FAA00F6EAD8 /* PullRefreshTableView */,
 				DD0F9BB018054D9D00FFAB40 /* Images */,
 				DD0F9BA918054D9D00FFAB40 /* Communicator */,
@@ -439,6 +443,16 @@
 			path = "iReader/Support Files/PullRefreshTableView";
 			sourceTree = SOURCE_ROOT;
 		};
+		DD9B573B180FFA570069514D /* AutoLayoutControl */ = {
+			isa = PBXGroup;
+			children = (
+				DD9B573C180FFA770069514D /* AutoLayoutControl.h */,
+				DD9B573D180FFA770069514D /* AutoLayoutControl.m */,
+			);
+			name = AutoLayoutControl;
+			path = "iReader/Support Files/AutoLayoutControl";
+			sourceTree = SOURCE_ROOT;
+		};
 		DDE01B9B17FDA4E200FCDDB2 /* RootController */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +625,7 @@
 				9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */,
 				9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */,
 				9A73836D18078D8900CB6BD9 /* CustomTableViewCellForFlat.m in Sources */,
+				DD9B573E180FFA770069514D /* AutoLayoutControl.m in Sources */,
 				DD8D6046180D7FAA00F6EAD8 /* MessageInterceptor.m in Sources */,
 				9A73837018078D9D00CB6BD9 /* AppDelegate.m in Sources */,
 				9A73837418078F3E00CB6BD9 /* Book.m in Sources */,

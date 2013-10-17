@@ -218,7 +218,8 @@
     _lastUpdatedLabel.shadowColor = [_lastUpdatedLabel.textColor colorWithAlphaComponent:0.1f];
     _statusLabel.shadowColor = [_statusLabel.textColor colorWithAlphaComponent:0.1f];
     
-    _arrowImage.contents = (id)(arrowImage? arrowImage.CGImage : DEFAULT_ARROW_IMAGE.CGImage);
+    //UIImage *image = [UIImage imageNamed:@"blueArrow.png"];
+    _arrowImage.contents = (id)(arrowImage? arrowImage.CGImage : /*DEFAULT_ARROW_IMAGE.CGImage*/[UIImage imageNamed:@"blueArrow.png"].CGImage);
 }
 
 
@@ -245,7 +246,7 @@
 	} else if (scrollView.isDragging) {
         
         
-        int hold = version>=7.0?125:-PULL_TRIGGER_HEIGHT;
+        int hold = version>=7.0?125:PULL_TRIGGER_HEIGHT;
 		if (_state == EGOOPullPulling && scrollView.contentOffset.y > -hold && scrollView.contentOffset.y < 0.0f && !isLoading) {
 			[self setState:EGOOPullNormal];
 		} else if (_state == EGOOPullNormal && scrollView.contentOffset.y < -hold && !isLoading) {
@@ -281,7 +282,9 @@
 //松手的时候调用
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
 	
-	if (scrollView.contentOffset.y <= - PULL_TRIGGER_HEIGHT && !isLoading) {
+    float version = [[[UIDevice currentDevice]systemVersion] floatValue];
+    double hold = version>=7.0?-125:- PULL_TRIGGER_HEIGHT;
+	if (scrollView.contentOffset.y <= hold && !isLoading) {
         //if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDidTriggerRefresh:)]) {
             [self.delegate egoRefreshTableHeaderDidTriggerRefresh:self];
        // }

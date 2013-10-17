@@ -22,7 +22,13 @@
     if(self)
     {
         m_breakPoint = 0;
-        self.m_flatListView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 385) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
+        CGRect frame;
+        if([[[UIDevice currentDevice] systemVersion] floatValue] >= kIOS_7){
+            frame = CGRectMake(0, 0, 320, 440);
+        }else{
+            frame = CGRectMake(0, 0, 320, 385);
+        }
+        self.m_flatListView = [[PullTableView alloc]initWithFrame:[AutoLayoutControl getFrameAccordingIOSVersion:frame] style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
         self.m_flatListView.pullDelegate = self;
     }
     return self;
@@ -68,11 +74,13 @@
 - (BOOL)addOffsetToBreakPoint:(NSInteger)offset
 {
     m_breakPoint += offset;
+    NSLog(@"addOffsetToBreakPoint:%d",offset);
     return YES;
 }
 - (NSInteger)getBooksSegment :(NSArray*)parmBooks
 {
     NSInteger bookCount = parmBooks.count - m_breakPoint;
+    if(bookCount <= 0) return 0;
     if(bookCount <= kSegmentCount)
         return bookCount;
     return kSegmentCount; 

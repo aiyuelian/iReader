@@ -29,7 +29,7 @@
     self.flatViewController = [[FlatViewController alloc]init];
     [self.flatViewController setRequestKind:@"python"];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
-    self.toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 447, 320, 33)];
+    self.toolbar = [[UIToolbar alloc]initWithFrame:[AutoLayoutControl autoModifyFrameOrgPointAccordingIOSVersion:CGRectMake(0, 440, 320, 40)]];
     
     UIBarButtonItem *btnSwitch = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnSwitchPressed)];
     
