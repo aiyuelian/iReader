@@ -97,10 +97,8 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomTableViewCellForFlat *cell = [tableView dequeueReusableCellWithIdentifier:kFVCCellIdentifier];
-    if(cell == nil)
-    {
+    if(cell == nil){
        cell = [[CustomTableViewCellForFlat alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kFVCCellIdentifier];
-       [cell setImageLoad:nil];
     }
         
     if([self.bookModel.bookArray count]< indexPath.row+1) return nil;
@@ -151,10 +149,8 @@
 - (void)loadCellImage :(CustomTableViewCellForFlat*)cell :(Book*)book
 {
     NSString *imagePath = [self getImagePath:book.images.small];
-    if(![[NSFileManager defaultManager] fileExistsAtPath:imagePath])
-    {
-        [cell setImageViewUrl:book.images.small];
-        [cell setImageLoad:[self createLoadfinishBlock:[cell getImageView] :self.bookModel]];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:imagePath]){
+        [cell setImageViewUrl:book.images.small :[self createLoadfinishBlock:[cell getImageView] :self.bookModel]];
     }
     else
     {

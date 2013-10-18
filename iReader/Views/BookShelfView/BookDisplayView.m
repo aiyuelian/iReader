@@ -35,9 +35,10 @@
 }
 
 #pragma mark - 接口方法
-- (BOOL)setImageViewUrl:(NSString *)url
+- (BOOL)setImageViewUrl :(NSString*)url :(LoadImageFinish)finishblock;
 {
     egoImageView.imageURL = [NSURL URLWithString:url];
+    loadImageFinish = finishblock;
     return YES;
 }
 - (BOOL)setImageViewPic:(UIImage *)image
@@ -49,11 +50,6 @@
     }
     UIView *newView = [[UIImageView alloc]initWithImage:image];
     [self addSubview:newView];
-    return YES;
-}
-- (BOOL)setLoadImageFinish:(LoadImageFinish)finishblock
-{
-    loadImageFinish = finishblock;
     return YES;
 }
 - (EGOImageView*)getEGOImageView

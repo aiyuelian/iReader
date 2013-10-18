@@ -17,8 +17,7 @@
     EGOImageView *egoImageView;
     LoadImageFinish loadImageFinish;
 }
-- (BOOL)setImageViewUrl :(NSString*)url;
+- (BOOL)setImageViewUrl :(NSString*)url :(LoadImageFinish)finishblock;
 - (BOOL)setImageViewPic :(UIImage*)image;
-- (BOOL)setLoadImageFinish :(LoadImageFinish)finishblock;
 - (EGOImageView*)getEGOImageView;
 @end

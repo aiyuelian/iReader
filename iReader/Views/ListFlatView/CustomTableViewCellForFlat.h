@@ -24,13 +24,11 @@
 
 
 - (EGOImageView*)getImageView;
-- (BOOL)setImageViewUrl :(NSString*)url;
+- (BOOL)setImageViewUrl :(NSString*)url :(LoadImageFinish)finish;
 - (BOOL)setTitleText :(NSString*)text;
 - (BOOL)setAuthorText :(NSArray*)authorArray;
 - (BOOL)setTitleFrame :(CGRect)frame;
 - (BOOL)setAuthorFrame :(CGRect)frame;
-
-- (BOOL)setImageLoad :(LoadImageFinish)loadFinishBlock;
 
 - (LoadImageFinish)getImageLoadFinishBlock;
 

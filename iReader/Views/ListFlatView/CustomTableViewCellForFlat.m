@@ -75,15 +75,11 @@
     [self addSubview:title];
     return YES;
 }
-- (BOOL)setImageViewUrl:(NSString *)url
+- (BOOL)setImageViewUrl :(NSString*)url :(LoadImageFinish)finish;
 {
     imageView.imageURL = [NSURL URLWithString:url];
+    loadFinish = finish;
    
-    return YES;
-}
-- (BOOL)setImageLoad:(LoadImageFinish)loadFinishBlock
-{
-    loadFinish = loadFinishBlock;
     return YES;
 }
 

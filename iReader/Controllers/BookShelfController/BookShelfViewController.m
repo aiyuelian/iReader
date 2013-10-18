@@ -110,8 +110,7 @@
         
     }else
     {
-        [displayView setLoadImageFinish:[self createLoadfinishBlock:[displayView getEGOImageView] :self.bookModel]];
-        [displayView setImageViewUrl:book.images.small];
+        [displayView setImageViewUrl:book.images.small :[self createLoadfinishBlock:[displayView getEGOImageView] :self.bookModel]];
         return YES;
     }
 }
