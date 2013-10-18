@@ -65,18 +65,6 @@
 
 #pragma  mark - 接口方法
 
-- (BOOL)setBreakPointToZero
-{
-    self.breakPoint = 0;
-    return YES;
-}
-
-- (BOOL)addOffsetToBreakPoint:(NSInteger)offset
-{
-    self.breakPoint += offset;
-    NSLog(@"addOffsetToBreakPoint:%d",offset);
-    return YES;
-}
 - (NSInteger)getBooksSegment :(NSArray*)parmBooks
 {
     NSInteger bookCount = parmBooks.count - self.breakPoint;

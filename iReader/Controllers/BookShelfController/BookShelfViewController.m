@@ -28,7 +28,7 @@
     {
         self.bookModel = parmBookModel;
         self.displayBooks = [[NSMutableArray alloc]initWithArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
-        [self addOffsetToBreakPoint:kSegmentCount];
+        self.breakPoint += kSegmentCount;
     }
     return self;
 }
@@ -86,7 +86,7 @@
 {
     NSInteger displayDataCount = [self getBooksSegment:self.bookModel.bookArray];
     NSArray *subBooks = [self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayDataCount)];
-    [self addOffsetToBreakPoint:displayDataCount];
+    self.breakPoint += displayDataCount;
     if(displayDataCount != 0)
     {
         [self.displayBooks addObjectsFromArray:subBooks];
@@ -149,12 +149,12 @@
 }
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
-    [self setBreakPointToZero];
+    self.breakPoint = 0;
     [self.displayBooks removeAllObjects];
     
     NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
     [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
-    [self addOffsetToBreakPoint:displayBooksCount];
+    self.breakPoint += displayBooksCount;
     
     
     self.m_flatListView.pullLastRefreshDate = [NSDate date];

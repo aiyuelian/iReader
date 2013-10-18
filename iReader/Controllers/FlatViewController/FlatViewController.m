@@ -69,7 +69,8 @@
     }else
     {
         self.displayBooks = [[NSMutableArray alloc]initWithArray:[self.displayBooks subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
-        [self addOffsetToBreakPoint:kSegmentCount];
+        
+        self.breakPoint += kSegmentCount;
     }
 }
 - (void)viewDidLoad
@@ -132,7 +133,7 @@
     if(displayDataCount != 0)
     {
         NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(self.breakPoint, displayDataCount)];
-        [self addOffsetToBreakPoint:displayDataCount];
+        self.breakPoint += displayDataCount;
         [self.displayBooks addObjectsFromArray:subBooks];
         [self.m_flatListView reloadData];
     }
@@ -182,6 +183,13 @@
     path = [path stringByAppendingPathComponent:imageName];
     return path;
 }
+- (void)fillDisplayBooks
+{
+    NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
+    [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
+   self.breakPoint += displayBooksCount;
+    [self.m_flatListView reloadData];
+}
 
 #pragma mark - EGOImageViewDelegate
 
@@ -204,17 +212,13 @@
 #pragma mark - 刷新通知回调
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
-    [self setBreakPointToZero];
+    self.breakPoint = 0;
     [self.displayBooks removeAllObjects];
-    
-    NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
-    [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
-    [self addOffsetToBreakPoint:displayBooksCount];
-    
     self.m_flatListView.pullLastRefreshDate = [NSDate date];
     self.m_flatListView.pullTableIsRefreshing = NO;
-    [self.m_flatListView reloadData];
+    
     [self performSelector:@selector(stopPullDownRefresh) withObject:nil afterDelay:0.1f];
+    [self performSelector:@selector(fillDisplayBooks) withObject:Nil afterDelay:0.1f];
     return YES;
 }
 
