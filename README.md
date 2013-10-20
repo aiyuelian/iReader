@@ -2,7 +2,7 @@
 # ThoughtWorks家庭作业
 
 
-这是项目iReader(https://github.com/aiyuelian/iReader)，
+这是项目［iReader］（https://github.com/aiyuelian/iReader），
 欢迎访问。
 
 ## 简介
