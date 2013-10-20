@@ -42,7 +42,7 @@
     btn.frame = CGRectMake(0, 0, 32, 32);
     [btn setBackgroundImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
     UIBarButtonItem *btnItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
-    //self.navigationItem.rightBarButtonItem = btnItem;
+    self.navigationItem.rightBarButtonItem = btnItem;
     [self.navigationItem setHidesBackButton:YES];
     
     
