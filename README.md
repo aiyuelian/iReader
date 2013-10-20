@@ -2,11 +2,12 @@
 # ThoughtWorks家庭作业
 
 
-这是项目iReader(https://github.com/aiyuelian/iReader),欢迎访问。
+这是项目iReader(https://github.com/aiyuelian/iReader)，
+欢迎访问。
 
 ## 简介
 
-这个作业主要实现了从 https://api.douban.com/v2/book/search?tag=computer,
+这个作业主要实现了从 https://api.douban.com/v2/book/search?tag=computer，
 请求json数据，并对返回的数据以不同的风格展示在界面上。
 
 ## 项目使用CocaPods管理第三方的开源库
