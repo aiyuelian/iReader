@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		21362AB9585042538E4FE18A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A91875F5428447CA54082C9 /* libPods.a */; };
-		9A73836218078CAE00CB6BD9 /* FlatViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836118078CAE00CB6BD9 /* FlatViewControllerTests.m */; };
 		9A73836518078CC700CB6BD9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836418078CC700CB6BD9 /* RootViewController.m */; };
 		9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836718078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m */; };
 		9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836918078D7B00CB6BD9 /* BookDisplayView.m */; };
@@ -19,6 +18,7 @@
 		9A73837A18078F8100CB6BD9 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73837918078F8100CB6BD9 /* Image.m */; };
 		9A73837D18078F8B00CB6BD9 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73837C18078F8B00CB6BD9 /* Rating.m */; };
 		9A73837F18078F9700CB6BD9 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73837E18078F9700CB6BD9 /* Tag.m */; };
+		DD083D771814031900D57BDD /* FlatViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD083D761814031900D57BDD /* FlatViewControllerTests.m */; };
 		DD0F9BA118054C8A00FFAB40 /* BookShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F9BA018054C8A00FFAB40 /* BookShelfViewController.m */; };
 		DD0F9BA418054C9800FFAB40 /* FlatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F9BA318054C9800FFAB40 /* FlatViewController.m */; };
 		DD0F9BD718054E0B00FFAB40 /* iReader-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD0F9BD618054E0B00FFAB40 /* iReader-Info.plist */; };
@@ -58,8 +58,6 @@
 /* Begin PBXFileReference section */
 		8A91875F5428447CA54082C9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F76BDFE41A044BE82E01710 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		9A73836018078CAE00CB6BD9 /* FlatViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewControllerTests.h; sourceTree = "<group>"; };
-		9A73836118078CAE00CB6BD9 /* FlatViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatViewControllerTests.m; sourceTree = "<group>"; };
 		9A73836318078CC700CB6BD9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9A73836418078CC700CB6BD9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		9A73836618078D6100CB6BD9 /* CustomTableViewCellForBookShelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCellForBookShelf.h; sourceTree = "<group>"; };
@@ -80,6 +78,8 @@
 		9A73837C18078F8B00CB6BD9 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
 		9A73837E18078F9700CB6BD9 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		9A73838018078F9D00CB6BD9 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		DD083D751814031900D57BDD /* FlatViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatViewControllerTests.h; sourceTree = "<group>"; };
+		DD083D761814031900D57BDD /* FlatViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatViewControllerTests.m; sourceTree = "<group>"; };
 		DD0F9B9F18054C8A00FFAB40 /* BookShelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookShelfViewController.h; path = iReader/Controllers/BookShelfController/BookShelfViewController.h; sourceTree = SOURCE_ROOT; };
 		DD0F9BA018054C8A00FFAB40 /* BookShelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookShelfViewController.m; path = iReader/Controllers/BookShelfController/BookShelfViewController.m; sourceTree = SOURCE_ROOT; };
 		DD0F9BA218054C9800FFAB40 /* FlatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlatViewController.h; path = iReader/Controllers/FlatViewController/FlatViewController.h; sourceTree = SOURCE_ROOT; };
@@ -143,19 +143,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9A54C31217FFF5B10014B7E6 /* iReaderTests */ = {
+		DD083D731814031900D57BDD /* iReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				9A8CB2181801053000A5D6B6 /* FlatViewControllerTests */,
+				DD083D741814031900D57BDD /* FlatViewControllerTests */,
 			);
 			path = iReaderTests;
 			sourceTree = "<group>";
 		};
-		9A8CB2181801053000A5D6B6 /* FlatViewControllerTests */ = {
+		DD083D741814031900D57BDD /* FlatViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
-				9A73836018078CAE00CB6BD9 /* FlatViewControllerTests.h */,
-				9A73836118078CAE00CB6BD9 /* FlatViewControllerTests.m */,
+				DD083D751814031900D57BDD /* FlatViewControllerTests.h */,
+				DD083D761814031900D57BDD /* FlatViewControllerTests.m */,
 			);
 			path = FlatViewControllerTests;
 			sourceTree = "<group>";
@@ -325,6 +325,7 @@
 		DD528AE417F693B700F8A826 = {
 			isa = PBXGroup;
 			children = (
+				DD083D731814031900D57BDD /* iReaderTests */,
 				DD528AF617F693B800F8A826 /* iReader */,
 				DD528AEF17F693B800F8A826 /* Frameworks */,
 				DD528AEE17F693B800F8A826 /* Products */,
@@ -362,7 +363,6 @@
 			children = (
 				DD0F9C291805500100FFAB40 /* AppDelegate */,
 				DD0F9BA618054D9D00FFAB40 /* Support Files */,
-				9A54C31217FFF5B10014B7E6 /* iReaderTests */,
 				DD0F9B8618054AF700FFAB40 /* Models */,
 				DD528B6217F709E300F8A826 /* Controllers */,
 				DD528B6317F709E300F8A826 /* Views */,
@@ -558,7 +558,6 @@
 				DD0F9BA418054C9800FFAB40 /* FlatViewController.m in Sources */,
 				DD0F9BDF18054E8000FFAB40 /* main.m in Sources */,
 				DD0F9C2718054FD500FFAB40 /* Communicator.m in Sources */,
-				9A73836218078CAE00CB6BD9 /* FlatViewControllerTests.m in Sources */,
 				9A73836518078CC700CB6BD9 /* RootViewController.m in Sources */,
 				9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */,
 				9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */,
@@ -568,6 +567,7 @@
 				9A73837418078F3E00CB6BD9 /* Book.m in Sources */,
 				9A73837718078F7400CB6BD9 /* BooksInfo.m in Sources */,
 				9A73837A18078F8100CB6BD9 /* Image.m in Sources */,
+				DD083D771814031900D57BDD /* FlatViewControllerTests.m in Sources */,
 				9A73837D18078F8B00CB6BD9 /* Rating.m in Sources */,
 				9A73837F18078F9700CB6BD9 /* Tag.m in Sources */,
 			);
