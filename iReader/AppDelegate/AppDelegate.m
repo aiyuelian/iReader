@@ -27,7 +27,7 @@
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"bookId" forClass:[Book class]];
     
     self.flatViewController = [[FlatViewController alloc]init];
-    [self.flatViewController setRequestKind:@"jsp"];
+    [self.flatViewController setRequestKind:@"asp.net"];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.flatViewController];
     self.toolbar = [[UIToolbar alloc]initWithFrame:[AutoLayoutControl autoModifyFrameOrgPointAccordingIOSVersion:CGRectMake(0, 440, 320, 40)]];
     
