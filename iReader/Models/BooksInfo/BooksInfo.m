@@ -25,18 +25,18 @@
     return self;
 }
 
-- (BOOL)refresh :(NSString*)controllerName
+- (BOOL)refresh
 {
-    self.currentController = controllerName;
+   // self.currentController = controllerName;
     [self.communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",self.bookKind]]];;
     [self.communicator start :NO];
     return YES;
 }
 
-- (BOOL)request:(NSString*)controllerName
+- (BOOL)requestData
 {
     if(self.bookKind == nil) return NO;
-    self.currentController = controllerName;
+    //self.currentController = controllerName;
     [self.communicator setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",self.bookKind]]];;
     [self.communicator start :YES];
     return YES;
@@ -64,19 +64,21 @@
     [NSKeyedArchiver archiveRootObject:books toFile:path];
     
     self.bookArray = [NSArray arrayWithArray:books];
+     [[NSNotificationCenter defaultCenter] postNotificationName:kRefresh object:nil userInfo:nil];
     
-    if([self.currentController isEqualToString:kFlatViewControllerName])
-        [[NSNotificationCenter defaultCenter]postNotificationName:kflatViewRefreshNotifiCationName object:nil];
-    if([self.currentController isEqualToString:kBookShelfViewControllerName])
-        [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
+//    if([self.currentController isEqualToString:kFlatViewControllerName])
+//        [[NSNotificationCenter defaultCenter]postNotificationName:kflatViewRefreshNotifiCationName object:nil];
+//    if([self.currentController isEqualToString:kBookShelfViewControllerName])
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kBookViewRefreshNotificationName object:nil userInfo:nil];
 }
 - (void)connectedError:(NSError *)error
 {
-    if([self.currentController isEqualToString:kFlatViewControllerName]){
-        [[NSNotificationCenter defaultCenter]postNotificationName:kFlatViewControllerError object:error];
-    }else{
-        [[NSNotificationCenter defaultCenter]postNotificationName:kBookShelfControllerError object:error];
-    }
+     [[NSNotificationCenter defaultCenter]postNotificationName:kRefreshError object:error];
+//    if([self.currentController isEqualToString:kFlatViewControllerName]){
+//        [[NSNotificationCenter defaultCenter]postNotificationName:kFlatViewControllerError object:error];
+//    }else{
+//        [[NSNotificationCenter defaultCenter]postNotificationName:kBookShelfControllerError object:error];
+//    }
 }
 
 - (void)parseCount:(int)count

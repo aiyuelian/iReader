@@ -17,8 +17,6 @@
 
 @implementation FlatViewController
 
-//@synthesize bookModel = _bookModel;
-
 #pragma mark - 共有方法
 
 - (id)initWithModel:(BooksInfo *)parmBookModel
@@ -27,7 +25,8 @@
     if(self){
         self.bookModel = parmBookModel;
         shouldExecutionviewWillAppearCode = YES;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kRefresh object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kRefreshError object:nil];
     }
     return self;
 }
@@ -39,13 +38,14 @@
         self.displayBooks = [[NSMutableArray alloc]init];
         self.bookModel = [[BooksInfo alloc]init];
         shouldExecutionviewWillAppearCode = YES;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kflatViewRefreshNotifiCationName object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kRefresh object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kRefreshError object:nil];
     }      
     return self;
 }
 - (BOOL)requestData
 {
-   return [self.bookModel request :kFlatViewControllerName];
+   return [self.bookModel requestData];
 }
 - (void)setRequestKind:(NSString *)kindName
 {
@@ -65,7 +65,7 @@
     shouldExecutionviewWillAppearCode = NO;
     if(!self.bookModel || !self.bookModel.bookKind) return;
     if(self.bookModel.bookKind && !self.bookModel.bookArray){
-        [self.bookModel request:kFlatViewControllerName];
+        [self requestData];
     }else
     {
         self.displayBooks = [[NSMutableArray alloc]initWithArray:[self.displayBooks subarrayWithRange:NSMakeRange(0, kSegmentCount)]];
@@ -78,7 +78,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kFlatViewControllerError object:nil];
     [super viewDidLoad];
-    [self.view addSubview:self.m_flatListView];
+    [self.view addSubview:self.flatListView];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -133,7 +133,7 @@
         NSArray *subBooks = [booksArray subarrayWithRange:NSMakeRange(self.breakPoint, displayDataCount)];
         self.breakPoint += displayDataCount;
         [self.displayBooks addObjectsFromArray:subBooks];
-        [self.m_flatListView reloadData];
+        [self.flatListView reloadData];
     }
     [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
     return YES;
@@ -179,13 +179,7 @@
     path = [path stringByAppendingPathComponent:imageName];
     return path;
 }
-- (void)fillDisplayBooks
-{
-    NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
-    [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
-   self.breakPoint += displayBooksCount;
-    [self.m_flatListView reloadData];
-}
+
 
 #pragma mark - EGOImageViewDelegate
 
@@ -208,13 +202,18 @@
 #pragma mark - 刷新通知回调
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
-    self.breakPoint = 0;
-    [self.displayBooks removeAllObjects];
-    self.m_flatListView.pullLastRefreshDate = [NSDate date];
-    self.m_flatListView.pullTableIsRefreshing = NO;
     
-    [self performSelector:@selector(stopPullDownRefresh) withObject:nil afterDelay:0.1f];
-    [self performSelector:@selector(fillDisplayBooks) withObject:Nil afterDelay:0.1f];
+   
+    [self performSelector:@selector(stopPullDownRefresh) withObject:nil afterDelay:0.f];
+    
+    self.breakPoint = 0;
+    NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
+    
+    [self.displayBooks removeAllObjects];
+    [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
+    self.breakPoint += displayBooksCount;
+    [self.flatListView reloadData];
+    
     return YES;
 }
 
@@ -232,7 +231,7 @@
 
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [self.bookModel refresh:kFlatViewControllerName];
+    [self.bookModel refresh];
 }
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
@@ -244,7 +243,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kflatViewRefreshNotifiCationName object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kFlatViewControllerError object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kRefresh object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kRefreshError object:nil];
 }
 @end

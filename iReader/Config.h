@@ -25,6 +25,8 @@
 
 #pragma mark - BooksInfo的宏定义 
 
+#define kRefreshError @"refreshViewError"
+#define kRefresh @"refreshView"
 #define kflatViewRefreshNotifiCationName @"flatViewRefresh"
 #define kBookViewRefreshNotificationName @"bookViewRfresh"
 #define kFlatViewControllerError @"kFlatViewControllerError"

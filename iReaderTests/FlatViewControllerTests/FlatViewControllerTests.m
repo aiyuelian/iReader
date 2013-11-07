@@ -16,7 +16,7 @@
 {
     id bookModel = [OCMockObject mockForClass:[BooksInfo class]];
     FlatViewController *flatViewController =[[FlatViewController alloc]initWithModel:bookModel];
-    [[bookModel expect] request:[OCMArg any]];
+    [[bookModel expect] request];
     [flatViewController requestData];
     [bookModel verify];
 }
@@ -29,7 +29,7 @@
     model.communicator = communicator;
     [[communicator stub]setURL:[OCMArg any]];
     [[communicator expect]start:YES];
-    [model request :[OCMArg any]];
+    [model requestData];
     [communicator verify];
 }
 
@@ -74,10 +74,10 @@
 - (void)test_Model_Refresh_With_Specify_Parm_Called_When_Pull_Down
 {
     id model = [OCMockObject mockForClass:[BooksInfo class]];
-    [[model expect] refresh:kFlatViewControllerName];
+    [[model expect] refresh];
     FlatViewController *controller = [[FlatViewController alloc]initWithModel:model];
    
-    [controller.m_flatListView.pullDelegate pullTableViewDidTriggerRefresh:[OCMArg any]];
+    [controller.flatListView.pullDelegate pullTableViewDidTriggerRefresh:[OCMArg any]];
     [model verify];
 }
 - (void)test_Model_Called_bookArray_Called_When_Pull_Up
@@ -86,7 +86,7 @@
     [[model expect] bookArray];
     FlatViewController *controller = [[FlatViewController alloc]initWithModel:model];
     
-    [controller.m_flatListView.pullDelegate pullTableViewDidTriggerLoadMore:[OCMArg any]];
+    [controller.flatListView.pullDelegate pullTableViewDidTriggerLoadMore:[OCMArg any]];
     [model verify];
 }
 - (void)test_if_Not_Set_Request_BookKind_Controller_request_Methond_Should_return_NO
@@ -99,7 +99,7 @@
     id model = [OCMockObject mockForClass:[BooksInfo class]];
     [[[model stub]andReturn:@"computer"] bookKind];
     [[[model stub]andReturn:nil] bookArray];
-    [[model expect] request:[OCMArg any]];
+    [[model expect] request];
     FlatViewController *controller = [[FlatViewController alloc]initWithModel:model];
     [controller viewWillAppear:NO];
     [model verify];

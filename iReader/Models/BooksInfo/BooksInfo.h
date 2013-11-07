@@ -16,9 +16,9 @@
 
 @property (nonatomic,strong) NSString *bookKind;
 @property (nonatomic,strong) NSArray *bookArray;
-@property (nonatomic,strong) NSString *currentController;
+//@property (nonatomic,strong) NSString *currentController;
 @property (nonatomic,strong) Communicator *communicator;
 
-- (BOOL)refresh :(NSString*)controllerName;
-- (BOOL)request:(NSString*)controllerName;
+- (BOOL)refresh;
+- (BOOL)requestData;
 @end

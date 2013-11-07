@@ -28,8 +28,8 @@
         }else{
             frame = CGRectMake(0, 0, 320, 385);
         }
-        self.m_flatListView = [[PullTableView alloc]initWithFrame:[AutoLayoutControl getFrameAccordingIOSVersion:frame] style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
-        self.m_flatListView.pullDelegate = self;
+        self.flatListView = [[PullTableView alloc]initWithFrame:[AutoLayoutControl getFrameAccordingIOSVersion:frame] style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
+        self.flatListView.pullDelegate = self;
     }
     return self;
 }
@@ -48,12 +48,12 @@
     
    
     //[self.view addSubview:self.m_flatListView];
-    self.m_flatListView.delegate = self;
-    self.m_flatListView.dataSource = self;
+    self.flatListView.delegate = self;
+    self.flatListView.dataSource = self;
     
-    self.m_flatListView.pullArrowImage = [UIImage imageNamed:@"blackArrow.png"];
-    self.m_flatListView.pullBackgroundColor = [UIColor yellowColor];
-    self.m_flatListView.pullTextColor = [UIColor blackColor];
+    self.flatListView.pullArrowImage = [UIImage imageNamed:@"blackArrow.png"];
+    self.flatListView.pullBackgroundColor = [UIColor yellowColor];
+    self.flatListView.pullTextColor = [UIColor blackColor];
 
     
 }
@@ -108,13 +108,13 @@
 
 - (void) stopPullDownRefresh
 {
-    self.m_flatListView.pullLastRefreshDate = [NSDate date];
-    self.m_flatListView.pullTableIsRefreshing = NO;
+    self.flatListView.pullLastRefreshDate = [NSDate date];
+    self.flatListView.pullTableIsRefreshing = NO;
 }
 
 - (void) stopPullUpRefresh
 {
-    self.m_flatListView.pullTableIsLoadingMore = NO;
+    self.flatListView.pullTableIsLoadingMore = NO;
 }
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView

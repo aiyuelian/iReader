@@ -15,7 +15,7 @@
 
 
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>
-@property (nonatomic,strong) PullTableView *m_flatListView;
+@property (nonatomic,strong) PullTableView *flatListView;
 @property NSInteger breakPoint;
 
 - (NSInteger)getBooksSegment :(NSArray*)books;

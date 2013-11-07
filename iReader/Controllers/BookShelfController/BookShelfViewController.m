@@ -17,7 +17,6 @@
 
 @implementation BookShelfViewController
 
-//@synthesize bookModel = _bookModel;
 
 #pragma mark - 初始化函数
 
@@ -47,15 +46,15 @@
 #pragma mark - 系统函数
 - (void)viewDidLoad
 {
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kBookViewRefreshNotificationName object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kBookShelfControllerError object:nil];
-    self.m_flatListView.pullLastRefreshDate = [NSDate date];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveModelChangeNotification:) name:kRefresh object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestUnSuccess:) name:kRefreshError object:nil];
+    self.flatListView.pullLastRefreshDate = [NSDate date];
     if(self.bookModel.bookArray == nil && self.bookModel.bookKind != nil){
         [self requestData];
     }
     [self.navigationItem setHidesBackButton:YES];
     [super viewDidLoad];
-    [self.view addSubview:self.m_flatListView];
+    [self.view addSubview:self.flatListView];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -70,7 +69,7 @@
 
 - (void)requestData
 {
-    [self.bookModel request:kBookShelfViewControllerName];
+    [self.bookModel requestData];
 }
 
 #pragma mark - 右导航栏按钮的,覆写父类的方法
@@ -90,7 +89,7 @@
     if(displayDataCount != 0)
     {
         [self.displayBooks addObjectsFromArray:subBooks];
-        [self.m_flatListView reloadData];
+        [self.flatListView reloadData];
     }
     [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
     return YES;
@@ -136,30 +135,36 @@
         [cell.contentView addSubview:displayView];
     }
 }
+- (void)fillDisplayBooks
+{
+    NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
+    [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
+    self.breakPoint += displayBooksCount;
+    [self.flatListView reloadData];
+}
 
 #pragma mark - 接收通知函数
 
 - (void)requestUnSuccess :(NSNotification*)notification
 {
     [self performSelector:@selector(stopPullUpRefresh) withObject:nil afterDelay:0.1f];
-    self.m_flatListView.pullTableIsRefreshing = NO;
+    self.flatListView.pullTableIsRefreshing = NO;
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"请求失败" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
 }
+
 - (BOOL)recieveModelChangeNotification:(NSNotification*)notification
 {
+
+    [self performSelector:@selector(stopPullDownRefresh) withObject:nil afterDelay:0.1f];
+    
     self.breakPoint = 0;
     [self.displayBooks removeAllObjects];
-    
     NSInteger displayBooksCount = [self getBooksSegment:self.bookModel.bookArray];
     [self.displayBooks addObjectsFromArray:[self.bookModel.bookArray subarrayWithRange:NSMakeRange(self.breakPoint, displayBooksCount)]];
     self.breakPoint += displayBooksCount;
+    [self.flatListView reloadData];
     
-    
-    self.m_flatListView.pullLastRefreshDate = [NSDate date];
-    self.m_flatListView.pullTableIsRefreshing = NO;
-    [self.m_flatListView reloadData];
-    [self performSelector:@selector(stopPullDownRefresh) withObject:nil afterDelay:0.1f];
     return YES;
 }
 
@@ -205,12 +210,12 @@
 }
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [self.bookModel refresh :kBookShelfViewControllerName];
+    [self requestData];
 }
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookViewRefreshNotificationName object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBookShelfControllerError object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kRefresh object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kRefreshError object:nil];
 }
 @end
