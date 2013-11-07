@@ -7,7 +7,6 @@
 //
 
 #import "BookShelfViewController.h"
-#import "CustomTableViewCellForBookShelf.h"
 #import "BookDisplayView.h"
 
 
@@ -172,11 +171,11 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identify  = @"cell";
-    CustomTableViewCellForBookShelf *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if(cell)
         [self clearExistCellContent:cell];
     if(!cell)
-        cell = [[CustomTableViewCellForBookShelf alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     
     [self displayBooksOnCell:cell :indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

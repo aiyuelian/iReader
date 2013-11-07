@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		21362AB9585042538E4FE18A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A91875F5428447CA54082C9 /* libPods.a */; };
 		9A73836518078CC700CB6BD9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836418078CC700CB6BD9 /* RootViewController.m */; };
-		9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836718078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m */; };
 		9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836918078D7B00CB6BD9 /* BookDisplayView.m */; };
 		9A73836D18078D8900CB6BD9 /* CustomTableViewCellForFlat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836C18078D8900CB6BD9 /* CustomTableViewCellForFlat.m */; };
 		9A73837018078D9D00CB6BD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73836F18078D9D00CB6BD9 /* AppDelegate.m */; };
@@ -60,8 +59,6 @@
 		8F76BDFE41A044BE82E01710 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9A73836318078CC700CB6BD9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9A73836418078CC700CB6BD9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		9A73836618078D6100CB6BD9 /* CustomTableViewCellForBookShelf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCellForBookShelf.h; sourceTree = "<group>"; };
-		9A73836718078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCellForBookShelf.m; sourceTree = "<group>"; };
 		9A73836918078D7B00CB6BD9 /* BookDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDisplayView.m; sourceTree = "<group>"; };
 		9A73836B18078D8900CB6BD9 /* CustomTableViewCellForFlat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCellForFlat.h; sourceTree = "<group>"; };
 		9A73836C18078D8900CB6BD9 /* CustomTableViewCellForFlat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCellForFlat.m; sourceTree = "<group>"; };
@@ -215,15 +212,6 @@
 				9A73837E18078F9700CB6BD9 /* Tag.m */,
 			);
 			path = Tag;
-			sourceTree = "<group>";
-		};
-		DD0F9B9B18054B2700FFAB40 /* CustomeTableViewCellForRootView */ = {
-			isa = PBXGroup;
-			children = (
-				9A73836618078D6100CB6BD9 /* CustomTableViewCellForBookShelf.h */,
-				9A73836718078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m */,
-			);
-			path = CustomeTableViewCellForRootView;
 			sourceTree = "<group>";
 		};
 		DD0F9BA618054D9D00FFAB40 /* Support Files */ = {
@@ -383,7 +371,6 @@
 		DD528B6317F709E300F8A826 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DD0F9B9B18054B2700FFAB40 /* CustomeTableViewCellForRootView */,
 				DD19CB0917FAA1B6009EC77E /* BookShelfView */,
 				DD19CB0A17FAA1B6009EC77E /* ListFlatView */,
 			);
@@ -559,7 +546,6 @@
 				DD0F9BDF18054E8000FFAB40 /* main.m in Sources */,
 				DD0F9C2718054FD500FFAB40 /* Communicator.m in Sources */,
 				9A73836518078CC700CB6BD9 /* RootViewController.m in Sources */,
-				9A73836818078D6100CB6BD9 /* CustomTableViewCellForBookShelf.m in Sources */,
 				9A73836A18078D7B00CB6BD9 /* BookDisplayView.m in Sources */,
 				9A73836D18078D8900CB6BD9 /* CustomTableViewCellForFlat.m in Sources */,
 				DD9B573E180FFA770069514D /* AutoLayoutControl.m in Sources */,
